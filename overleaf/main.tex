@@ -1,0 +1,66 @@
+\documentclass[
+  journal=largetwo,
+  manuscript=article-type,
+  year=2020,
+  volume=37,
+]{cup-journal}
+
+\usepackage{amsmath}
+\usepackage[nopatch]{microtype}
+\usepackage{booktabs}
+\usepackage{subfiles}
+
+\title{Fake News Detection via Explainable Reinforcement Learning}
+
+\author{S. Socha}
+\affiliation{Faculty of Economic Sciences, University of Warsaw, Warsaw, Poland}
+\email[S. Socha]{s.socha2@student.uw.edu.pl}
+
+\addbibresource{bibliography.bib}
+
+\keywords{NLP, fake news, Reinforcement Learning, XAI, BERT} %% First letter not capped
+
+\begin{document}
+
+\begin{abstract}
+Insert abstract text here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+\end{abstract}
+
+\noindent Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+
+\section{Introduction}
+
+\subfile{sections/section1_introduction}
+
+\section{Main part \textit{(WIP)}}
+
+\subfile{sections/section2_mainpart}
+
+\section{Conclusion \textit{(WIP)}}
+
+\subfile{sections/section3_conclusion}
+
+
+
+
+
+\begin{acknowledgement}
+Insert the Acknowledgment text here.
+\end{acknowledgement}
+
+\paragraph{Competing Interests}
+
+A statement about any financial, professional, contractual or personal relationships or situations that could be perceived to impact the presentation of the work --- or `None' if none exist.
+
+\paragraph{Data Availability Statement}
+
+A statement about how to access data, code and other materials allowing users to understand, verify and replicate findings --- e.g. Replication data and code can be found in Harvard Dataverse: \verb+\url{https://doi.org/link}+.
+
+
+
+%\endnote in some journals will behave like \footnote; and \printendnotes will not output anything. 
+\printendnotes
+
+\printbibliography
+
+\end{document}
