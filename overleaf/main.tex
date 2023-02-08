@@ -1,8 +1,8 @@
 \documentclass[
   journal=largetwo,
   manuscript=article-type,
-  year=2020,
-  volume=37,
+  year=2023,
+  volume=1,
 ]{cup-journal}
 
 \usepackage{amsmath}
@@ -10,7 +10,7 @@
 \usepackage{booktabs}
 \usepackage{subfiles}
 
-\title{Fake News Detection via Explainable Reinforcement Learning}
+\title{Fake News Detection via Explainable Reinforcement Learning and BERT}
 
 \author{S. Socha}
 \affiliation{Faculty of Economic Sciences, University of Warsaw, Warsaw, Poland}
@@ -18,47 +18,29 @@
 
 \addbibresource{bibliography.bib}
 
-\keywords{NLP, fake news, Reinforcement Learning, XAI, BERT} %% First letter not capped
+\keywords{fake news, NLP, Reinforcement Learning, BERT, XAI} %% First letter not capped
 
 \begin{document}
 
 \begin{abstract}
-Insert abstract text here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Events in recent years such as the COVID-19 pandemic and the war in Ukraine show that disinformation has entered a new high level. The methods of disinformation and the increasingly sophisticated ways of hiding it make it necessary to have more and more powerful tools for their detection. In this work, I address the topic of news classification using a novel approach that combines three state-of-the-art elements of fake news detection - Reinforcement Learning, BERT, and XAI. The research shows that both using RL and implementing BERT improve prediction performance. I show that... \textit{WIP...}
 \end{abstract}
 
-\noindent Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 
-\section{Introduction}
-
+\section{Introduction \textit{WIP}}
 \subfile{sections/section1_introduction}
 
-\section{Main part \textit{(WIP)}}
+\section{Related Work \textit{(WIP)}}
+\subfile{sections/section2_relatedwork}
 
-\subfile{sections/section2_mainpart}
+\section{Methodology \textit{(WIP)}}
+\subfile{sections/section3_methodology}
 
 \section{Conclusion \textit{(WIP)}}
-
-\subfile{sections/section3_conclusion}
-
+\subfile{sections/section4_conclusion}
 
 
 
-
-\begin{acknowledgement}
-Insert the Acknowledgment text here.
-\end{acknowledgement}
-
-\paragraph{Competing Interests}
-
-A statement about any financial, professional, contractual or personal relationships or situations that could be perceived to impact the presentation of the work --- or `None' if none exist.
-
-\paragraph{Data Availability Statement}
-
-A statement about how to access data, code and other materials allowing users to understand, verify and replicate findings --- e.g. Replication data and code can be found in Harvard Dataverse: \verb+\url{https://doi.org/link}+.
-
-
-
-%\endnote in some journals will behave like \footnote; and \printendnotes will not output anything. 
 \printendnotes
 
 \printbibliography

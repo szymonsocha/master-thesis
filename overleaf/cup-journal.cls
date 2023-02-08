@@ -568,11 +568,11 @@
     \cup@warning{No authors defined: At least one author is required}%
   \fi
   \newpage\vspace*{\dimexpr-\headsep-\headheight\relax}
-  \parbox[b]{\dimexpr\textwidth-26mm\relax}{%
-    \firstheadsize{\journalnamefont\cup@journal@name} 
-    (\cup@year), {\volumefont\cup@vol}, \thepage--\pageref{LastPage}
+  \parbox[b]{\dimexpr\textwidth-40mm\relax}{%                               % [zmiana] bylo 26mm
+    %\firstheadsize{\journalnamefont\cup@journal@name}                      % [zmiana] oryginalnie to jest odkomentowane
+    %(\cup@year), {\volumefont\cup@vol}, \thepage--\pageref{LastPage}       % [zmiana] oryginalnie to jest odkomentowane
     \par% doi:{\cup@doi}
-    }\hfill\includegraphics[width=26mm]{wne-logo-new-en}\par
+    }\hfill\includegraphics[width=40mm]{wne-logo-new-en}\par                % [zmiana] bylo 26mm i inne logo
   \vspace*{\baselineskip}
   {\sffamily\bfseries\color{structure@color}\MakeUppercase{\convertchar{\cup@manuscript}{-}{ }}\par}
   \vspace*{\cup@space@pre@title}%
@@ -1305,7 +1305,7 @@
             \cup@copyright@notice\par
             \vspace*{2\baselineskip}
           \fi
-          \includegraphics[width=\linewidth]{wne-logo-new-en}
+          \includegraphics[width=\linewidth]{wne-logo-new-en}        % [zmiana] bylo inne logo
         \end{textblock*}
         {%
           \titlefont
@@ -1444,12 +1444,12 @@
   \cup@layout@large
   \patch@numeric@authors
   \patchcmd{\@maketitle}
-    {\includegraphics[width=\linewidth]{wne-logo-new-en}}
+    {\includegraphics[width=\linewidth]{wne-logo-new-en}}   % [zmiana] bylo inne logo
     {\journalnamefont\upshape\normalsize\bfseries cambridge.org}
     {}{}
   \patchcmd{\@maketitle}
     {\textbf{www.cambridge.org}}
-    {\includegraphics[width=\linewidth]{wne-logo-new-en}}
+    {\includegraphics[width=\linewidth]{wne-logo-new-en}}  % [zmiana] bylo inne logo
     {}{}
   \renewcommand{\email}[2][]{%
     \cup@emailtrue%
@@ -1482,12 +1482,12 @@
   \cup@layout@large
   \patch@numeric@authors
   \patchcmd{\@maketitle}
-    {\includegraphics[width=\linewidth]{wne-logo-new-en}}
+    {\includegraphics[width=\linewidth]{wne-logo-new-en}}  % [zmiana] bylo inne logo
     {\journalnamefont\upshape\normalsize\bfseries cambridge.org}
     {}{}
   \patchcmd{\@maketitle}
     {\textbf{www.cambridge.org}}
-    {\includegraphics[width=\linewidth]{wne-logo-new-en}}
+    {\includegraphics[width=\linewidth]{wne-logo-new-en}}  % [zmiana] bylo inne logo
     {}{}
   \renewcommand{\email}[2][]{%
     \cup@emailtrue%
@@ -1549,7 +1549,7 @@
   \cup@layout@medium 
   % \colorlet{structure@color}{green!40!black}
   % \patchcmd{\@maketitle}
-  %   {\includegraphics[width=26mm]{wne-logo-new-en}}
+  %   {\includegraphics[width=26mm]{wne-logo-new-en}}  % [zmiana] bylo inne logo
   %   {\parbox{5em}{\fontsize{1em}{1em}\fontfamily{NimbusSans}\bfseries\color{structure@color}British\\Journal of\\Political\\Science}}{}{}
   \patch@numeric@authors
   \let\endnote\footnote
@@ -1559,7 +1559,7 @@
 %   \def\cup@journal@name{Japanese Journal of Political Science}
 %   \cup@layout@medium 
 %   % \patchcmd{\@maketitle}
-%   %   {\includegraphics[width=26mm]{wne-logo-new-en}}
+%   %   {\includegraphics[width=26mm]{wne-logo-new-en}}  % [zmiana] bylo inne logo
 %   %   {{\fontsize{2em}{2em}{\fontfamily{LinuxBiolinumT-LF}\selectfont JJPS}}}{}{}
 %   % \patchcmd{\@maketitle}
 %   %   {(Received \cup@recvd; revised \cup@revd; accepted \cup@accptd; first published online \cup@publd)}
@@ -1647,7 +1647,7 @@
   % \colorlet{structure@color}{red!70!black}
   \patch@numeric@authors
   % \patchcmd{\@maketitle}
-    % {wne-logo-new-en}{epsa-outline-black}{}{}
+    % {wne-logo-new-en}{epsa-outline-black}{}{}  % [zmiana] bylo inne logo
   \let\endnote\footnote
   \let\printendnotes\relax
   \AtEndOfClass{%
@@ -1688,7 +1688,7 @@
 %   \cup@layout@small 
 %   \patch@numeric@authors
 %   % \patchcmd{\@maketitle}
-%   %   {\includegraphics[width=26mm]{wne-logo-new-en}}
+%   %   {\includegraphics[width=26mm]{wne-logo-new-en}}  % [zmiana] bylo inne logo
 %   %   {\fcolorbox{black}{black}{\includegraphics[height=2em]{pup-logo}}}{}{}
 %   \let\endnote\footnote
 %   \let\printendnotes\relax
@@ -1700,6 +1700,7 @@
 %   \patchcmd{\trfiller}{structure@color}{black}{}{}
 %   \patchcmd{\thfiller}{structure@color}{black}{}{}
 % }
+
 
 \ifcsname cup@jnl@\cup@journal\endcsname%
   \csname cup@jnl@\cup@journal\endcsname%
