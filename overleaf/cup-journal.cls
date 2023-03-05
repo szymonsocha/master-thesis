@@ -1420,7 +1420,7 @@
   \patch@numeric@authors
 }
 \def\cup@jnl@largetwo{
-  \def\cup@journal@name{Cambridge Large Two}
+  \def\cup@journal@name{University of Warsaw, Faculty of Economic Sciences} % org: Cambridge Large Two
   \cup@layout@largetwo
   \setcounter{secnumdepth}{0}
   \patchcmd{\@maketitle}

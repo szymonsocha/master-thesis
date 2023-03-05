@@ -2,7 +2,11 @@ The problem of detecting fake news using machine learning techniques is being ad
 
 However, the classical approach is being supplanted by deep learning. There are papers that show that deep learning performs better at detecting fake news than classical methods. An example is the work of Wang et al. whose model based on convolutional neural networks (CNN) outperforms classical text classification methods \autocite{wang-2017-liar}. Rashkin et al. comes to similar findings by building the LSTM \autocite{rashkin-etal-2017-truth}. In addition, the performance of different approaches on the same dataset was also checked. It was shown that of all the machine learning algorithms, deep learning methods (such as Deep CNN, LSTM or RNN) are the best at detecting fake news. Deep learning shows supremacy over traditional machine learning methods on various datasets \autocite{IEEE2021}. 
 
-\textit{\textbf{WIP}} One approach that shows high efficacy and outperforms other solutions is the use of linguistic models \autocite{Conroy2015}. One model that is often reported in the literature is BERT \autocite{}. The authors in their study showing that using BERT outperforms other models and allows for state-of-the-art results \autocite{} ....
+On top of that, deep learning models can be yet improved. Research shows that employing language models improves performance of the previous state-of-the-art models \autocite{Conroy2015}. One of the most popular language models is BERT \autocite{Devlin2018}. There are, several variants of this model. The base BERT is a pre-trained model that was created to learn the context of words in unlabeled text. An extension of BERT that achieves even better results is RoBERTa (Robustly optimized BERT approach). However, its use requires more computing power and is more time-consuming \autocite{Liu2019}. Another variant of BERTa is DistilBERT, a lighter version of BERTa. It requires fewer resources and is faster, but has weaker performance \autocite{Sanh2019}.
+
+In this paper, I focus on exploring the base version of BERT. I believe it is a good starting point and a compromise between the great performing RoBERTa and the light and fast DistilBERT. 
+
+Earlier I described the confirmation that language models are useful for text classification. Detection of fake news is a special case of text classification, and the usefulness of language models (specifically, BERT) in this case has also been confirmed in the literature. The paper \autocite{Carvajal2020} shows an example that BERT performs better in text classification than traditional approaches (Logistic Regression, SVC, Ridge Classifier).
 
 ...
 
@@ -26,9 +30,9 @@ Apart from this, the model most often used \textit{(or perhaps recommended? to b
 \textit{
 Blueprint:
 \begin{enumerate}
-    \item Fake News Detection in general 
-    \item Fake News Detection with BERT
-    \item What models were used
+    \item \st{Fake News Detection in general}
+    \item \st{Fake News Detection with BERT}
+    \item \st{What models were used}
     \item Are there any clues if BERT always 
         improves the performance?
     \item With what models BERT works best?
@@ -36,12 +40,3 @@ Blueprint:
 }
 
 Basing on the literature review formulate hypothesis. 
-
-\textit{
-\\Early hypothesis ideas:
-\begin{enumerate}
-    \item BERT improves the performance regardless of type of model used
-    \item BERT works best with the model X 
-        (choose the type of model after the literature review)
-\end{enumerate}
-}
