@@ -1,4 +1,4 @@
-The detection of fake news using machine learning techniques is a widely researched problem in the literature \autocite{Pathak2020}. esearchers have proposed various approaches to address this problem, which can be categorized into three distinct types: traditional methods, deep learning methods, and extensions with language models. The primary objective of these approaches is to enhance the performance of the models to detect fake news as accurately as possible. The classical approach to detecting fake news involves analyzing text length, word frequency, and the use of n-grams \autocite{Shu2017}. Additionally, researchers have proposed using sentiment analysis to improve the performance of the model. It has been found that the sentiment of a text is associated with the type of information conveyed, indicating whether the information is misinformation or not \autocite{rubin2016fake}.
+The detection of fake news using machine learning techniques is a widely researched problem in the literature \autocite{Pathak2020}. Researchers have proposed various approaches to address this problem, which can be categorized into three distinct types: traditional methods, deep learning methods, and extensions with language models. The primary objective of these approaches is to enhance the performance of the models to detect fake news as accurately as possible. The classical approach to detecting fake news involves analyzing text length, word frequency, and the use of n-grams \autocite{Shu2017}. Additionally, researchers have proposed using sentiment analysis to improve the performance of the model. It has been found that the sentiment of a text is associated with the type of information conveyed, indicating whether the information is misinformation or not \autocite{rubin2016fake}.
 
 The classical approach to detecting fake news using machine learning techniques is gradually being replaced by deep learning methods. Recent research papers demonstrate that deep learning techniques outperform classical approaches in identifying fake news. For example, Wang et al. achieved superior performance by employing a model based on convolutional neural networks (CNN) as opposed to classical text classification methods \autocite{wang-2017-liar}. Similarly, Rashkin et al. reported comparable results by utilizing the Long Short-Term Memory (LSTM) model \autocite{rashkin-etal-2017-truth}. Furthermore, various machine learning algorithms were evaluated on the same dataset to compare their performance in detecting fake news. The findings indicate that deep learning approaches, such as Deep CNN, LSTM, or RNN, exhibit superior performance over traditional machine learning methods. These results are consistent across different datasets, demonstrating the overall superiority of deep learning methods in identifying fake news \autocite{IEEE2021}. 
 
@@ -8,6 +8,10 @@ The present study centers on examining the base version of BERT as a starting po
 
 As previously discussed, language models have been shown to be effective for text classification, including the specific case of detecting fake news. BERT, a widely used language model, has also been confirmed to be useful in this domain by previous research, as highlighted in the paper authored by \autocite{Gundapu2021}. Specifically, the study demonstrates that BERT outperforms traditional methods such as Logistic Regression, SVC, and Ridge Classifier in text classification for fake news detection.
 Furthermore, a multitude of research works \autocite{Alonso-Bartolome2021, Wang2021, Singhal2019, Aljawarneh2022, Jwa2019, Yang2019} have corroborated the applicability of BERT in various approaches to detecting fake news.
+
+In order to enhance its performance, the Bidirectional Encoder Representations from Transformers (BERT) model can be fine-tuned to a particular task or dataset. This approach allows users to tailor the pre-trained model, which incurs significant costs in terms of time and resources, to suit their specific requirements, such as a specific linguistic structure or subject matter of texts. Fine-tuning the BERT model is a cost-effective alternative to training the base model from scratch, although it still demands a substantial amount of computational resources. Technically, the fine-tuning process entails adding an additional layer to the final BERT layer and training the entire model for several epochs \autocite{Devlin2018}. As a result, the state-of-the-art performance achieved via fine-tuning has made it widely adopted for various Natural Language Processing (NLP) tasks.
+
+However, Devlin et al. have contended that state-of-the-art results can also be obtained without the need for fine-tuning. They suggest utilizing pre-trained BERT embeddings as inputs to a Bidirectional Long Short-Term Memory (BiLSTM) network prior to the final classification layer. This technique produces an F1 score that is only 0.3 percentage points lower than the score achieved via fine-tuning. Peters et al. (2018) have arrived at similar findings. They have conducted a comparative analysis of fine-tuned and feature-based models on various NLP tasks, such as semantic text similarity, named entity recognition, sentiment analysis, and natural language inference. Their results indicate that, except for semantic text similarity, both types of models, fine-tuned and feature-based approaches, exhibit comparable performance on the aforementioned NLP tasks \autocite{Peters2019}.
 
 According to the existing literature, it can be inferred that the incorporation of BERT leads to improved prediction results, irrespective of the model applied to it \autocite{Kaliyar2021}. Kaliyar et al. (2021) proposed a framework in which they employed BERT for word embedding, and subsequently applied diverse machine learning models such as Multinomial Naïve Bayes, Decision Tree, Random Forest, and KNN. The authors noted that the utilization of BERT led to enhanced prediction results. Alternatively, one can aim to enhance the performance of Vanilla BERT by combining it with LSTM (BERT + LSTM) \autocite{Rai2022}. 
 Considering the susceptibility of neural networks to overfitting, Naïve Bayes has been observed to outperform deep learning and language models on small datasets. However, as the size of the dataset increases, deep learning models begin to surpass Naïve Bayes in fake news prediction. The utilization of language models is expected to yield improved and state-of-the-art performance \autocite{Khan2021}.
@@ -28,19 +32,3 @@ Apart from this, the model most often used \textit{(or perhaps recommended? to b
 
 ...
 
-
-\noindent\rule{3cm}{0.2pt}
-
-\textit{
-Blueprint:
-\begin{enumerate}
-    \item \st{Fake News Detection in general}
-    \item \st{Fake News Detection with BERT}
-    \item \st{What models were used}
-    \item \st{Are there any clues if BERT always 
-        improves the performance?}
-    \item With what models BERT works best?
-\end{enumerate}
-}
-
-\noindent\rule{3cm}{0.2pt}
