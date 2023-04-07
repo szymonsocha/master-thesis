@@ -8,11 +8,11 @@
 \toprule
 \headrow Model & Accuracy & F1-Score\\
 \midrule
-KNN & 96.5 & 96.4\\ 
-XGBoost & 97.0 & 96.9\\ 
-Random Forest & 95.5 & 95.4\\ 
+KNN & 96.5 & 96.5\\ 
+XGBoost & 95.0 & 95.0\\ 
+Random Forest & 94.0 & 94.0\\ 
 SVM Classifier & \textbf{98.5} & \textbf{98.5}\\ 
-Logistic Regression & \textbf{98.5} & \textbf{98.5}\\ 
+Logistic Regression & 98.0 & 98.0\\ 
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -31,11 +31,11 @@ Logistic Regression & \textbf{98.5} & \textbf{98.5}\\
 \toprule
 \headrow Model & Accuracy & F1-Score\\
 \midrule
-KNN & 91.0 & 91.0 \\ 
-XGBoost & 91.5 & 91.4 \\ 
-Random Forest & 89.0 & 89.0 \\ 
-SVM Classifier & \textbf{97.0} & \textbf{96.9} \\ 
-Logistic Regression & 96.5 & 96.4 \\ 
+KNN & 89.5 & 89.4 \\ 
+XGBoost & 92.5 & 92.5 \\ 
+Random Forest & 87.5 & 87.4 \\ 
+SVM Classifier & 94.0 & 93.9 \\ 
+Logistic Regression & \textbf{94.5} & \textbf{94.4} \\ 
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -46,8 +46,133 @@ Logistic Regression & 96.5 & 96.4 \\
 \end{threeparttable}
 \end{table}
 
+\begin{table}[hbt!]
+\begin{threeparttable}
+\caption{Word2Vec Embeddings results}
+\label{word2vec_embeddings_results}
+\begin{tabular}{lll}
+\toprule
+\headrow Model & Accuracy & F1-Score\\
+\midrule
+KNN & 91.5 & 91.4 \\ 
+XGBoost & 96.0 & 96.0 \\ 
+Random Forest & 91.0 & 91.1 \\ 
+SVM Classifier & \textbf{97.0} & \textbf{96.9} \\ 
+Logistic Regression & 95.5 & 95.4 \\ 
+\bottomrule
+\end{tabular}
+%\begin{tablenotes}[hang]
+%\item[]Table note
+%\item[a]First note
+%\item[b]Another table note
+%\end{tablenotes}
+\end{threeparttable}
+\end{table}
 
+\begin{table}[hbt!]
+\begin{threeparttable}
+\caption{KNN results}
+\label{knn_results}
+\begin{tabular}{lll}
+\toprule
+\headrow Embedding Method & Accuracy & F1-Score\\
+\midrule
+BERT & \textbf{96.5} & \textbf{96.5} \\ 
+GloVe & 89.5 & 89.4 \\ 
+Word2Vec & 91.5 & 91.4 \\ 
+\bottomrule
+\end{tabular}
+%\begin{tablenotes}[hang]
+%\item[]Table note
+%\item[a]First note
+%\item[b]Another table note
+%\end{tablenotes}
+\end{threeparttable}
+\end{table}
 
+\begin{table}[hbt!]
+\begin{threeparttable}
+\caption{XGBoost results}
+\label{xgb_results}
+\begin{tabular}{lll}
+\toprule
+\headrow Embedding Method & Accuracy & F1-Score\\
+\midrule
+BERT & 95.0 & 95.0 \\ 
+GloVe & 92.5 & 92.5 \\ 
+Word2Vec & \textbf{96.0} & \textbf{96.0} \\ 
+\bottomrule
+\end{tabular}
+%\begin{tablenotes}[hang]
+%\item[]Table note
+%\item[a]First note
+%\item[b]Another table note
+%\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[hbt!]
+\begin{threeparttable}
+\caption{Random Forest results}
+\label{rf_results}
+\begin{tabular}{lll}
+\toprule
+\headrow Embedding Method & Accuracy & F1-Score\\
+\midrule
+BERT & \textbf{94.0} & \textbf{94.0} \\ 
+GloVe & 87.5 & 87.4 \\ 
+Word2Vec & 91.0 & 91.1 \\ 
+\bottomrule
+\end{tabular}
+%\begin{tablenotes}[hang]
+%\item[]Table note
+%\item[a]First note
+%\item[b]Another table note
+%\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[hbt!]
+\begin{threeparttable}
+\caption{SVM Classifier results}
+\label{svc_results}
+\begin{tabular}{lll}
+\toprule
+\headrow Embedding Method & Accuracy & F1-Score\\
+\midrule
+BERT & \textbf{98.5} & \textbf{98.5} \\ 
+GloVe & 94.0 & 93.9 \\ 
+Word2Vec & 97.0 & 96.9 \\ 
+\bottomrule
+\end{tabular}
+%\begin{tablenotes}[hang]
+%\item[]Table note
+%\item[a]First note
+%\item[b]Another table note
+%\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[hbt!]
+\begin{threeparttable}
+\caption{Logistic Regression results}
+\label{lr_results}
+\begin{tabular}{lll}
+\toprule
+\headrow Embedding Method & Accuracy & F1-Score\\
+\midrule
+BERT & \textbf{98.0} & \textbf{98.0} \\ 
+GloVe & 94.5 & 94.4 \\ 
+Word2Vec & 95.5 & 95.4 \\ 
+\bottomrule
+\end{tabular}
+%\begin{tablenotes}[hang]
+%\item[]Table note
+%\item[a]First note
+%\item[b]Another table note
+%\end{tablenotes}
+\end{threeparttable}
+\end{table}
 \noindent\rule{3cm}{0.2pt}
 
 \textit{
