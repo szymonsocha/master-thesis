@@ -21,6 +21,9 @@ This research article aims to investigate how the use of various natural languag
 
 The dataset chosen to carry out the research, which meets the criteria outlined above for a good dataset, is \href{https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset}{\textit{Fake and real news dataset}}, obtained from the Kaggle website. The dataset comprises 40,000 observations, encompassing both authentic and fake news articles. Each observation is characterized by five variables that explicate the news item, namely, the news item's title, its content, the topic it pertains to, the date of publication, and a binary label denoting if the news is fake or not. Notably, the dataset is balanced, containing an equivalent number of true and fake news items.
 
+The raw dataset underwent a process of data cleaning and feature engineering. The topics of the news articles were concatenated with their respective content, resulting in a longer text that retains all pertinent information. The cleaned texts were further processed by removing stopwords and punctuation marks. The topic information was omitted from the analysis as it unnecessarily complicates the dataset, potentially introduces uncertainty regarding its correctness, and is difficult to obtain for new data. Importantly, introducing additional variables would add noise to the prediction results, thereby complicating the analysis of the impact of different embedding methods on prediction accuracy. Similarly, the time variable of article publication was also omitted. The resulting dataset is now ready for further analysis and for applying embedding techniques to the news content.
+
+
 
 \begin{figure*}
 \centering
@@ -33,8 +36,31 @@ The dataset chosen to carry out the research, which meets the criteria outlined 
 \subsection{Embeddings (WIP)}
 \textit{Describe here what 'embedding' means and introduce embedding methods that were used in the paper...}
 
+\subsubsection{BERT}
+\textit{Description of BERT embedding method...}
+
+\subsubsection{GloVe}
+\textit{Description of GloVe embedding method...}
+
+\subsubsection{Word2Vec}
+\textit{Description of Word2Vec embedding method...}
+
+
 \subsection{Classification algorithms (WIP)}
 \textit{Describe what classification algorithms has been used and what are the pros and cons for each of them...}
+
+\subsubsection{K-nearest neighbors algorithm(KNN)}
+\textit{Description of KNN algorithm...}
+
+\subsubsection{XGBoost}
+\textit{Description of XGB algorithm...}
+
+\subsubsection{Random Forest}
+\textit{Description of Random Forest algorithm...}
+
+\subsubsection{SVM Classifier}
+\textit{Description of SVM Classifier algorithm...}
+
 
 \subsection{Results (WIP)}
 
