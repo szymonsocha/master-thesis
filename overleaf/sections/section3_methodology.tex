@@ -23,18 +23,23 @@ The dataset chosen to carry out the research, which meets the criteria outlined 
 
 The raw dataset underwent a process of data cleaning and feature engineering. The topics of the news articles were concatenated with their respective content, resulting in a longer text that retains all pertinent information. The cleaned texts were further processed by removing stopwords and punctuation marks. The topic information was omitted from the analysis as it unnecessarily complicates the dataset, potentially introduces uncertainty regarding its correctness, and is difficult to obtain for new data. Importantly, introducing additional variables would add noise to the prediction results, thereby complicating the analysis of the impact of different embedding methods on prediction accuracy. Similarly, the time variable of article publication was also omitted. The resulting dataset is now ready for further analysis and for applying embedding techniques to the news content.
 
-
-
-\begin{figure*}
-\centering
-\includegraphics[width=0.8\linewidth]{methodology-schema_extended.pdf}
-\caption{Architecture of each embedding-classifier model combination}
-\label{methodology-schema_extended}
-\end{figure*}
-
-
 \subsection{Embeddings (WIP)}
-\textit{Describe here what 'embedding' means and introduce embedding methods that were used in the paper...}
+The next step after cleaning the data is to convert it in a way that is understandable to the computer. Textual data have the characteristic of forming a coherent whole. Individual letters form words, words form sentences, and sentences form longer pieces of text with a logical structure. Natural language is full of nuances. The same words can have different meanings and emotional connotations depending on the context. Understanding language comes naturally to humans and does not pose major difficulties. The human brain easily captures the appropriate context of words and their meaning, combining them into a logical and coherent text.
+
+However, computers operate in a completely different way than the human brain. Computers are only capable of analyzing sequences of bits, which when arranged in a specific order, yield a result in the form of an element of a larger whole. This way, a sequence of bits can be presented as individual letters. Further, a sequence of letters can be represented as words. Then, in the tokenization process, individual words can be assigned a specific number. This way, the computer is able to decode the data represented by these words into something it can understand.
+
+Nevertheless, the problem of conveying a deeper understanding of the text, the meaning of individual words, and the semantic relationships between them as understood in terms of similarity and analogies, still remains to be solved. The answer to this problem is Word Embedding. Word Embedding is used to represent words using numerical vectors, in such a way that the distance calculated between two words that are semantically similar is small, and between two semantically different words is large.
+
+The Figure~\ref{embedding_example} illustrates the graphical interpretation of Word Embedding, often encountered in the literature. Similar words, such as King and Queen, Man and Woman, are closer to each other in the vector space. Two dimensions can be interpreted. The first dimension determines the fact of being a member of the family, while the second dimension indicates gender.
+
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=0.75\linewidth]{embedding_example.pdf}
+\caption{Smilar words are closer together}
+\label{embedding_example}
+\end{figure}
+
+Trained unsupervised machine learning algorithms handle the conversion of words into vectors from large sets of textual data. These algorithms learn to predict the context of a given word by analyzing the words with which it is associated. In this process, they learn the context of words and the semantic relationships between them. Examples of such algorithms include BERT, Word2Vec, and GloVe.
 
 \subsubsection{BERT}
 \textit{Description of BERT embedding method...}
@@ -49,7 +54,7 @@ The raw dataset underwent a process of data cleaning and feature engineering. Th
 \subsection{Classification algorithms (WIP)}
 \textit{Describe what classification algorithms has been used and what are the pros and cons for each of them...}
 
-\subsubsection{K-nearest neighbors algorithm(KNN)}
+\subsubsection{K-nearest neighbors algorithm (KNN)}
 \textit{Description of KNN algorithm...}
 
 \subsubsection{XGBoost}
@@ -61,6 +66,20 @@ The raw dataset underwent a process of data cleaning and feature engineering. Th
 \subsubsection{SVM Classifier}
 \textit{Description of SVM Classifier algorithm...}
 
+
+
+
+
+\begin{figure*}
+\centering
+\includegraphics[width=0.8\linewidth]{methodology-schema_extended.pdf}
+\caption{Architecture of each embedding-classifier model combination}
+\label{methodology-schema_extended}
+\end{figure*}
+
+
+\subsection{Metrics (WIP)}
+\textit{Description of used performance metrics..}
 
 \subsection{Results (WIP)}
 
