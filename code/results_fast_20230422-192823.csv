@@ -1,0 +1,21 @@
+Model,Accuracy,F1-Score
+KNN+BERT,95.5,95.2
+XGBoost+BERT,95.5,95.3
+RandomForest+BERT,94.0,93.7
+SVC+BERT,97.5,97.4
+LR+BERT,96.5,96.2
+KNN+GloVe,91.5,90.9
+XGBoost+GloVe,96.5,96.3
+RandomForest+GloVe,92.5,92.1
+SVC+GloVe,98.5,98.4
+LR+GloVe,98.0,97.8
+KNN+Word2Vec,89.0,87.8
+XGBoost+Word2Vec,96.5,96.2
+RandomForest + Word2Vec,94.5,94.0
+SVC+Word2Vec,98.5,98.4
+LR+Word2Vec,98.0,97.9
+KNN+GPT2,97.0,96.7
+XGBoost+GPT2,98.0,97.8
+RandomForest+GPT2,95.0,94.6
+SVC+GPT2,99.5,99.5
+LR+GPT2,99.0,98.9
