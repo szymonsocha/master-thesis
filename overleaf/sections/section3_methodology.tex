@@ -60,7 +60,11 @@ An important feature of BERT is the fact that it can be fine-tuned for use in a 
 In this research, I only focus on extracting embeddings from BERT. I extract embeddings for the first token ([CLS] token) from the last hidden layer of the model.
 
 \subsubsection{GloVe}
-\textit{Description of GloVe embedding method...}
+GloVe (Global Vectors) is an unsupervised machine learning algorithm aimed at creating word embeddings by aggregating co-occurrence matrices of words that contain information about how often individual word pairs occur in a given text corpus.
+
+The starting point is to create a co-occurrence matrix. The values in this matrix indicate how often a given word pair occurs together. The next step is to calculate the probability of one word occurring in the presence of another word, or rather the ratio between successive probabilities \autocite{Pennington2014}. Without delving into mathematical details, word embeddings are obtained using a matrix subjected to factorization in a process similar to dimensionality reduction \autocite{Albrecht2020}.
+
+It is possible to use pre-trained word vectors trained on large text datasets. In this paper, a model trained on Common Crawl was used, consisting of 840 billion tokens and 2.2 million words, which allowed for obtaining 300-dimensional vectors for each word.
 
 \subsubsection{Word2Vec}
 \textit{Description of Word2Vec embedding method...}
