@@ -34,21 +34,39 @@ The Figure~\ref{embedding_example} illustrates the graphical interpretation of W
 
 \begin{figure}[hbt!]
 \centering
-\includegraphics[width=0.75\linewidth]{embedding_example.pdf}
-\caption{Smilar words are closer together}
+\includegraphics[width=0.55\linewidth]{embedding_example.pdf}
+\caption{Similar words are closer together}
 \label{embedding_example}
 \end{figure}
 
-Trained unsupervised machine learning algorithms handle the conversion of words into vectors from large sets of textual data. These algorithms learn to predict the context of a given word by analyzing the words with which it is associated. In this process, they learn the context of words and the semantic relationships between them. Examples of such algorithms include BERT, Word2Vec, and GloVe.
+Trained unsupervised machine learning algorithms handle the conversion of words into vectors from large sets of textual data. These algorithms learn to predict the context of a given word by analyzing the words with which it is associated. In this process, they learn the context of words and the semantic relationships between them. Examples of such algorithms include BERT, Glove, Word2Vec, and GPT2, which has not yet been investigated in the literature for the purpose of fake news detection.
 
 \subsubsection{BERT}
-\textit{Description of BERT embedding method...}
+BERT (Bidirectional Encoder Representations from Transformers) is based on the transformer attention mechanism, which learns contextual dependencies between words in a sentence. Transformers consist of encoders that are responsible for reading input data. The next element is decoders, which are responsible for making predictions based on the given task. In contrast to directional models, which read textual input data in sequential order, transformer encoders read all words at once, giving them an undirected character. This is possible thanks to the use of a mask language model (MLM), which randomly masks tokens while trying to predict the semantics of the missing word. This means that the model learns the context of a given word based on the surrounding words. The Figure~\ref{bert_architecture} illustrates the visualization of the bidirectional sentence-level classification architecture of BERT.
+
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=0.75\linewidth]{bert_architecture.png}
+\caption{BERT model architecture \autocite{Devlin2018}}
+\label{bert_architecture}
+\end{figure}
+
+An important feature of BERT is that it can be pre-trained. BERT has many pre-trained models that can be used for different purposes. The model used in this paper is BERT-base, which consists of 12 encoder stack layers, 768 hidden units, and 12 multi-head attention heads, with a total of 110 million parameters. It was pre-trained on a dataset consisting of 11,038 books and the English version of Wikipedia.
+
+BERT requires input data to be specially converted to the required format before being used in the pre-trained model. This enables the use of its key component, word embedding. During word embedding, BERT uses a technique called WordPiece. This technique is based on breaking words down into smaller subwords. This is done to capture the meanings of words that may have different interpretations or different meanings depending on the context. The WordPiece technique thus creates all combinations that can occur in a given text, assigning each extracted part a pre-trained vocabulary vector. These vectors then serve as input data for the previously trained transformer architecture.
+
+An important feature of BERT is the fact that it can be fine-tuned for use in a specific task or adapted to the characteristics of a given dataset. Fine-tuning involves running the pre-trained model training on a new dataset for several epochs. According to the literature, such a trained model achieves state-of-the-art performance. However, in this paper, I will not be performing fine-tuning. Instead, I focus on comparing the impact of using different embedding methods on changes in model performance. Additionally, as mentioned earlier in the literature review, fine-tuning can be replaced by using a classifier on the pre-trained BERT architecture.
+
+In this research, I only focus on extracting embeddings from BERT. I extract embeddings for the first token ([CLS] token) from the last hidden layer of the model.
 
 \subsubsection{GloVe}
 \textit{Description of GloVe embedding method...}
 
 \subsubsection{Word2Vec}
 \textit{Description of Word2Vec embedding method...}
+
+\subsubsection{GPT2}
+\textit{Description of GPT2 embedding method...}
 
 
 \subsection{Classification algorithms (WIP)}
@@ -67,19 +85,20 @@ Trained unsupervised machine learning algorithms handle the conversion of words 
 \textit{Description of SVM Classifier algorithm...}
 
 
+\subsection{Metrics (WIP)}
+\textit{Description of used performance metrics..}
 
 
+\subsection{Architecture (WIP)}
+\textit{Description of a final model architecture..}
 
 \begin{figure*}
 \centering
-\includegraphics[width=0.8\linewidth]{methodology-schema_extended.pdf}
+\includegraphics[width=0.8\linewidth]{methodology-schema_gpt2_extended.pdf}
 \caption{Architecture of each embedding-classifier model combination}
 \label{methodology-schema_extended}
 \end{figure*}
 
-
-\subsection{Metrics (WIP)}
-\textit{Description of used performance metrics..}
 
 \subsection{Results (WIP)}
 
@@ -91,11 +110,11 @@ Trained unsupervised machine learning algorithms handle the conversion of words 
 \toprule
 \headrow Model & Accuracy & F1-Score\\
 \midrule
-KNN & 96.5 & 96.5\\ 
-XGBoost & 95.0 & 95.0\\ 
-Random Forest & 94.0 & 94.0\\ 
-SVM Classifier & \textbf{98.5} & \textbf{98.5}\\ 
-Logistic Regression & 98.0 & 98.0\\ 
+ KNN                 &       95.5 &       95.2 \\
+ XGBoost             &       95.5 &       95.3 \\
+ Random Forest       &       94.0 &       93.7 \\
+ \textbf{SVM Classifier}      &       \textbf{97.5} &       \textbf{97.4} \\
+ Logistic Regression &       96.5 &       96.2 \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -114,11 +133,11 @@ Logistic Regression & 98.0 & 98.0\\
 \toprule
 \headrow Model & Accuracy & F1-Score\\
 \midrule
-KNN & 89.5 & 89.4 \\ 
-XGBoost & 92.5 & 92.5 \\ 
-Random Forest & 87.5 & 87.4 \\ 
-SVM Classifier & 94.0 & 93.9 \\ 
-Logistic Regression & \textbf{94.5} & \textbf{94.4} \\ 
+ KNN                 &       91.5 &       90.9 \\
+ XGBoost             &       96.5 &       96.3 \\
+ Random Forest       &       92.5 &       92.1 \\
+ \textbf{SVM Classifier}      &       \textbf{98.5} &       \textbf{98.4} \\
+ Logistic Regression &       98.0 &       97.8 \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -137,11 +156,34 @@ Logistic Regression & \textbf{94.5} & \textbf{94.4} \\
 \toprule
 \headrow Model & Accuracy & F1-Score\\
 \midrule
-KNN & 91.5 & 91.4 \\ 
-XGBoost & 96.0 & 96.0 \\ 
-Random Forest & 91.0 & 91.1 \\ 
-SVM Classifier & \textbf{97.0} & \textbf{96.9} \\ 
-Logistic Regression & 95.5 & 95.4 \\ 
+KNN                 &       89.0 &       87.8 \\
+XGBoost             &       96.5 &       96.2 \\
+Random Forest       &       94.5 &       94.0 \\
+\textbf{SVM Classifier}      &       \textbf{98.5} &       \textbf{98.4} \\
+Logistic Regression &       98.0 &       97.9 \\
+\bottomrule
+\end{tabular}
+%\begin{tablenotes}[hang]
+%\item[]Table note
+%\item[a]First note
+%\item[b]Another table note
+%\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[hbt!]
+\begin{threeparttable}
+\caption{GPT2 Embeddings results}
+\label{bert_embeddings_results}
+\begin{tabular}{lll}
+\toprule
+\headrow Model & Accuracy & F1-Score\\
+\midrule
+KNN & 97.0 & 96.7\\ 
+XGBoost & 98.0 & 97.8\\ 
+Random Forest & 95.0 & 94.6\\ 
+\textbf{SVM Classifier} & \textbf{99.5} & \textbf{99.5}\\ 
+Logistic Regression & 99.0 & 98.9\\ 
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -160,9 +202,10 @@ Logistic Regression & 95.5 & 95.4 \\
 \toprule
 \headrow Embedding Method & Accuracy & F1-Score\\
 \midrule
-BERT & \textbf{96.5} & \textbf{96.5} \\ 
-GloVe & 89.5 & 89.4 \\ 
-Word2Vec & 91.5 & 91.4 \\ 
+ BERT     &       95.5 &       95.2 \\
+ GloVe    &       91.5 &       90.9 \\
+ Word2Vec &       89.0 &       87.8 \\
+ \textbf{GPT2}     &       \textbf{97.0}   &       \textbf{96.7} \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -181,9 +224,10 @@ Word2Vec & 91.5 & 91.4 \\
 \toprule
 \headrow Embedding Method & Accuracy & F1-Score\\
 \midrule
-BERT & 95.0 & 95.0 \\ 
-GloVe & 92.5 & 92.5 \\ 
-Word2Vec & \textbf{96.0} & \textbf{96.0} \\ 
+ BERT     &       95.5 &       95.3 \\
+ GloVe    &       96.5 &       96.3 \\
+ Word2Vec &       96.5 &       96.2 \\
+ \textbf{GPT2}     &       \textbf{98.0}   &       \textbf{97.8} \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -202,9 +246,10 @@ Word2Vec & \textbf{96.0} & \textbf{96.0} \\
 \toprule
 \headrow Embedding Method & Accuracy & F1-Score\\
 \midrule
-BERT & \textbf{94.0} & \textbf{94.0} \\ 
-GloVe & 87.5 & 87.4 \\ 
-Word2Vec & 91.0 & 91.1 \\ 
+ BERT     &       94.0 &       93.7 \\
+ GloVe    &       92.5 &       92.1 \\
+ Word2Vec &       94.5 &       94.0 \\
+ \textbf{GPT2}     &       \textbf{95.0}   &       \textbf{94.6} \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -223,9 +268,10 @@ Word2Vec & 91.0 & 91.1 \\
 \toprule
 \headrow Embedding Method & Accuracy & F1-Score\\
 \midrule
-BERT & \textbf{98.5} & \textbf{98.5} \\ 
-GloVe & 94.0 & 93.9 \\ 
-Word2Vec & 97.0 & 96.9 \\ 
+ BERT     &       97.5 &       97.4 \\
+ GloVe    &       98.5 &       98.4 \\
+ Word2Vec &       98.5 &       98.4 \\
+ \textbf{GPT2}     &       \textbf{99.5} &       \textbf{99.5} \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -244,9 +290,10 @@ Word2Vec & 97.0 & 96.9 \\
 \toprule
 \headrow Embedding Method & Accuracy & F1-Score\\
 \midrule
-BERT & \textbf{98.0} & \textbf{98.0} \\ 
-GloVe & 94.5 & 94.4 \\ 
-Word2Vec & 95.5 & 95.4 \\ 
+ BERT     &       96.5 &       96.2 \\
+ GloVe    &       98.0 &       97.8 \\
+ Word2Vec &       98.0 &       97.9 \\
+ \textbf{GPT2}     &       \textbf{99.0} &       \textbf{98.9} \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
