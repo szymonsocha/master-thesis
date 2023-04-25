@@ -4,7 +4,7 @@
 \textit{
 \begin{enumerate}
     \item Describe what models will be used
-    \item Briefly describe what BERT is
+    \item \st{Briefly describe what BERT is}
     \item Mention that models without BERT will be compared with the ones with BERT
     \item Performance measures
     \item Dataset selection and preparation
@@ -22,6 +22,17 @@ This research article aims to investigate how the use of various natural languag
 The dataset chosen to carry out the research, which meets the criteria outlined above for a good dataset, is \href{https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset}{\textit{Fake and real news dataset}}, obtained from the Kaggle website. The dataset comprises 40,000 observations, encompassing both authentic and fake news articles. Each observation is characterized by five variables that explicate the news item, namely, the news item's title, its content, the topic it pertains to, the date of publication, and a binary label denoting if the news is fake or not. Notably, the dataset is balanced, containing an equivalent number of true and fake news items.
 
 The raw dataset underwent a process of data cleaning and feature engineering. The topics of the news articles were concatenated with their respective content, resulting in a longer text that retains all pertinent information. The cleaned texts were further processed by removing stopwords and punctuation marks. The topic information was omitted from the analysis as it unnecessarily complicates the dataset, potentially introduces uncertainty regarding its correctness, and is difficult to obtain for new data. Importantly, introducing additional variables would add noise to the prediction results, thereby complicating the analysis of the impact of different embedding methods on prediction accuracy. Similarly, the time variable of article publication was also omitted. The resulting dataset is now ready for further analysis and for applying embedding techniques to the news content.
+
+\subsection{Architecture (WIP)}
+\textit{Description of a final model architecture..}
+
+\begin{figure*}
+\centering
+\includegraphics[width=0.8\linewidth]{methodology-schema_gpt2_extended.pdf}
+\caption{Architecture of each embedding-classifier model combination}
+\label{methodology-schema_extended}
+\end{figure*}
+
 
 \subsection{Embeddings (WIP)}
 The next step after cleaning the data is to convert it in a way that is understandable to the computer. Textual data have the characteristic of forming a coherent whole. Individual letters form words, words form sentences, and sentences form longer pieces of text with a logical structure. Natural language is full of nuances. The same words can have different meanings and emotional connotations depending on the context. Understanding language comes naturally to humans and does not pose major difficulties. The human brain easily captures the appropriate context of words and their meaning, combining them into a logical and coherent text.
@@ -67,7 +78,11 @@ The starting point is to create a co-occurrence matrix. The values in this matri
 It is possible to use pre-trained word vectors trained on large text datasets. In this paper, a model trained on Common Crawl was used, consisting of 840 billion tokens and 2.2 million words, which allowed for obtaining 300-dimensional vectors for each word.
 
 \subsubsection{Word2Vec}
-\textit{Description of Word2Vec embedding method...}
+The Word2Vec algorithm is yet another method for obtaining word embeddings. Unlike the other two methods, it is not a method that consists of a single, homogeneous algorithm. Word2Vec can be based on two distinct models: the CBOW and Skip-Gram Model.
+
+The functioning of these two algorithms can be intuitively interpreted as two opposites. CBOW works as a model that predicts a given word based on its context. On the other hand, the Skip-Gram Model is a model that predicts the context of a given word, i.e., the words preceding and following it. Both models are built on a 3-layer neural network with an input layer, a hidden layer, and an output layer.
+
+The originator of the Word2Vec method recommends using the Skip-Gram Model with negative sampling, which outperforms other variants in research. In this study, pre-trained vectors were used, trained on a portion of the Google News dataset consisting of about 100 billion words. The model consists of 300-dimensional vectors for 3 million words and phrases. It was not specified which Word2Vec method was used to obtain these vectors \autocite{Mikolov2013}.
 
 \subsubsection{GPT2}
 \textit{Description of GPT2 embedding method...}
@@ -93,15 +108,8 @@ It is possible to use pre-trained word vectors trained on large text datasets. I
 \textit{Description of used performance metrics..}
 
 
-\subsection{Architecture (WIP)}
-\textit{Description of a final model architecture..}
 
-\begin{figure*}
-\centering
-\includegraphics[width=0.8\linewidth]{methodology-schema_gpt2_extended.pdf}
-\caption{Architecture of each embedding-classifier model combination}
-\label{methodology-schema_extended}
-\end{figure*}
+
 
 
 \subsection{Results (WIP)}
