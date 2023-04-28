@@ -52,24 +52,6 @@ The Figure~\ref{embedding_example} illustrates the graphical interpretation of W
 
 Trained unsupervised machine learning algorithms handle the conversion of words into vectors from large sets of textual data. These algorithms learn to predict the context of a given word by analyzing the words with which it is associated. In this process, they learn the context of words and the semantic relationships between them. Examples of such algorithms include BERT, Glove, Word2Vec, and GPT2, which has not yet been investigated in the literature for the purpose of fake news detection.
 
-\subsubsection{BERT}
-BERT (Bidirectional Encoder Representations from Transformers) is based on the transformer attention mechanism, which learns contextual dependencies between words in a sentence. Transformers consist of encoders that are responsible for reading input data. The next element is decoders, which are responsible for making predictions based on the given task. In contrast to directional models, which read textual input data in sequential order, transformer encoders read all words at once, giving them an undirected character. This is possible thanks to the use of a mask language model (MLM), which randomly masks tokens while trying to predict the semantics of the missing word. This means that the model learns the context of a given word based on the surrounding words. The Figure~\ref{bert_architecture} illustrates the visualization of the bidirectional sentence-level classification architecture of BERT.
-
-\begin{figure}[hbt!]
-\centering
-\includegraphics[width=0.75\linewidth]{bert_architecture.png}
-\caption{BERT model architecture \autocite{Devlin2018}}
-\label{bert_architecture}
-\end{figure}
-
-An important feature of BERT is that it can be pre-trained. BERT has many pre-trained models that can be used for different purposes. The model used in this paper is BERT-base, which consists of 12 encoder stack layers, 768 hidden units, and 12 multi-head attention heads, with a total of 110 million parameters. It was pre-trained on a dataset consisting of 11,038 books and the English version of Wikipedia.
-
-BERT requires input data to be specially converted to the required format before being used in the pre-trained model. This enables the use of its key component, word embedding. During word embedding, BERT uses a technique called WordPiece. This technique is based on breaking words down into smaller subwords. This is done to capture the meanings of words that may have different interpretations or different meanings depending on the context. The WordPiece technique thus creates all combinations that can occur in a given text, assigning each extracted part a pre-trained vocabulary vector. These vectors then serve as input data for the previously trained transformer architecture.
-
-An important feature of BERT is the fact that it can be fine-tuned for use in a specific task or adapted to the characteristics of a given dataset. Fine-tuning involves running the pre-trained model training on a new dataset for several epochs. According to the literature, such a trained model achieves state-of-the-art performance. However, in this paper, I will not be performing fine-tuning. Instead, I focus on comparing the impact of using different embedding methods on changes in model performance. Additionally, as mentioned earlier in the literature review, fine-tuning can be replaced by using a classifier on the pre-trained BERT architecture.
-
-In this research, I only focus on extracting embeddings from BERT. I extract embeddings for the first token ([CLS] token) from the last hidden layer of the model.
-
 \subsubsection{GloVe}
 GloVe (Global Vectors) is an unsupervised machine learning algorithm aimed at creating word embeddings by aggregating co-occurrence matrices of words that contain information about how often individual word pairs occur in a given text corpus.
 
@@ -78,11 +60,29 @@ The starting point is to create a co-occurrence matrix. The values in this matri
 It is possible to use pre-trained word vectors trained on large text datasets. In this paper, a model trained on Common Crawl was used, consisting of 840 billion tokens and 2.2 million words, which allowed for obtaining 300-dimensional vectors for each word.
 
 \subsubsection{Word2Vec}
-The Word2Vec algorithm is yet another method for obtaining word embeddings. Unlike the other two methods, it is not a method that consists of a single, homogeneous algorithm. Word2Vec can be based on two distinct models: the CBOW and Skip-Gram Model.
+The Word2Vec algorithm is yet another method for obtaining word embeddings. Unlike GloVe method, it is not a method that consists of a single, homogeneous algorithm. Word2Vec can be based on two distinct models: the CBOW and Skip-Gram Model.
 
 The functioning of these two algorithms can be intuitively interpreted as two opposites. CBOW works as a model that predicts a given word based on its context. On the other hand, the Skip-Gram Model is a model that predicts the context of a given word, i.e., the words preceding and following it. Both models are built on a 3-layer neural network with an input layer, a hidden layer, and an output layer.
 
 The originator of the Word2Vec method recommends using the Skip-Gram Model with negative sampling, which outperforms other variants in research. In this study, pre-trained vectors were used, trained on a portion of the Google News dataset consisting of about 100 billion words. The model consists of 300-dimensional vectors for 3 million words and phrases. It was not specified which Word2Vec method was used to obtain these vectors \autocite{Mikolov2013}.
+
+\subsubsection{BERT}
+BERT (Bidirectional Encoder Representations from Transformers) is a deep learning Large Language Model founded on the transformer self-attention mechanism. The transformer architecture incorporates encoders responsible for assimilating input data and assigning importance weights to individual words via the self-attention mechanism. This allows BERT to acquire an understanding of contextual dependencies among words within a sentence. Unlike sequential directional models, which process textual input data in a linear fashion, transformer encoders simultaneously process all words, resulting in an inherently bidirectional nature \autocite{Vaswani2017}. The bidirectional sentence-level classification architecture of BERT is depicted in the provided Figure~\ref{bert_architecture}.
+
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=0.75\linewidth]{bert_architecture.png}
+\caption{BERT model architecture \autocite{Devlin2018}}
+\label{bert_architecture}
+\end{figure}
+
+A noteworthy characteristic of BERT is its pre-training capability. During the pre-training phase, the BERT model acquires contextual understanding of a given word by analyzing the surrounding words. This is achieved through the application of a masked language model (MLM), where tokens are randomly masked, and the model attempts to predict the missing word's semantics. BERT offers a variety of pre-trained models that can be utilized for diverse purposes. Specifically, the BERT-base model, employed in this study, encompasses 12 encoder stack layers, 768 hidden units, and 12 multi-head attention heads, comprising a total of 110 million parameters. The pre-training of this model was conducted on a dataset containing 11,038 books and the English edition of Wikipedia.
+
+BERT requires input data to be specially converted to the required format before being used in the pre-trained model. This enables the use of its key component, word embedding. During word embedding, BERT uses a technique called WordPiece. This technique is based on breaking words down into smaller subwords. This is done to capture the meanings of words that may have different interpretations or different meanings depending on the context. The WordPiece technique thus creates all combinations that can occur in a given text, assigning each extracted part a pre-trained vocabulary vector. These vectors then serve as input data for the previously trained transformer architecture.
+
+An important feature of BERT is the fact that it can be fine-tuned for use in a specific task or adapted to the characteristics of a given dataset. Fine-tuning involves running the pre-trained model training on a new dataset for several epochs. According to the literature, such a trained model achieves state-of-the-art performance. However, in this paper, I will not be performing fine-tuning. Instead, I focus on comparing the impact of using different embedding methods on changes in model performance. Additionally, as mentioned earlier in the literature review, fine-tuning can be replaced by using a classifier on the pre-trained BERT architecture.
+
+In this research, I use BERT as a feature extractor. I extract embeddings for the first token ([CLS] token) from the last hidden layer of the model.
 
 \subsubsection{GPT2}
 \textit{Description of GPT2 embedding method...}
