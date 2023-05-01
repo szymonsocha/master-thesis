@@ -116,41 +116,17 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 
 \begin{table}[hbt!]
 \begin{threeparttable}
-\caption{BERT Embeddings results}
-\label{bert_embeddings_results}
-\begin{tabular}{lll}
-\toprule
-\headrow Model & Accuracy & F1-Score\\
-\midrule
- KNN                &       95.5 &       95.2 \\
- XGBoost            &       95.5 &       95.3 \\
- Random Forest       &       94.0   &       93.8 \\
- \textbf{SVM Classifier}                &       \textbf{97.5} &       \textbf{97.4} \\
- Logistic Regression                 &       96.5 &       96.2 \\
- Neural Network      &       95.5 &       95.3 \\
-\bottomrule
-\end{tabular}
-%\begin{tablenotes}[hang]
-%\item[]Table note
-%\item[a]First note
-%\item[b]Another table note
-%\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\begin{table}[hbt!]
-\begin{threeparttable}
 \caption{GloVe Embeddings results}
 \label{glove_embeddings_results}
 \begin{tabular}{lll}
 \toprule
 \headrow Model & Accuracy & F1-Score\\
 \midrule
- KNN               &       92.5 &       92.0   \\
- XGBoost           &       96,0   &       95.7 \\
- Random Forest      &       93.5 &       93.2 \\
- \textbf{SVM Classifier}               &       \textbf{98.5} &       \textbf{98.4} \\
  \textbf{Logistic Regression}                &       \textbf{98.5} &       \textbf{98.4} \\
+ KNN               &       92.5 &       92.0   \\
+ \textbf{SVM Classifier}               &       \textbf{98.5} &       \textbf{98.4} \\
+ Random Forest      &       93.5 &       93.2 \\
+ XGBoost           &       96,0   &       95.7 \\
  Neural Network     &       92.5 &       91.4 \\
 \bottomrule
 \end{tabular}
@@ -170,11 +146,11 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \toprule
 \headrow Model & Accuracy & F1-Score\\
 \midrule
- KNN            &       89.0   &       87.8 \\
- XGBoost        &       96.0   &       95.6 \\
- Random Forest &       94.5 &       94.1 \\
- \textbf{SVM Classifier}            &       \textbf{98.5} &       \textbf{98.4} \\
  Logistic Regression             &       98.0   &       97.9 \\
+ \textbf{SVM Classifier}            &       \textbf{98.5} &       \textbf{98.4} \\
+ KNN            &       89.0   &       87.8 \\
+ Random Forest &       94.5 &       94.1 \\
+ XGBoost        &       96.0   &       95.6 \\
  Neural Network  &       97.5 &       97.3 \\
 \bottomrule
 \end{tabular}
@@ -188,18 +164,18 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 
 \begin{table}[hbt!]
 \begin{threeparttable}
-\caption{GPT-2 Embeddings results}
-\label{gpt2_embeddings_results}
+\caption{BERT Embeddings results}
+\label{bert_embeddings_results}
 \begin{tabular}{lll}
 \toprule
 \headrow Model & Accuracy & F1-Score\\
 \midrule
- KNN                &       96.5 &       96.2 \\
- XGBoost            &       98.0   &       97.8 \\
- Random Forest       &       96.0   &       95.7 \\
- \textbf{SVM Classifier}                &       \textbf{99.5} &       \textbf{99.5} \\
- Logistic Regression                 &       99.0   &       98.9 \\
- Neural Network      &       98.5 &       98.4 \\
+ Logistic Regression                 &       96.5 &       96.2 \\
+ KNN                &       95.5 &       95.2 \\
+ \textbf{SVM Classifier}                &       \textbf{97.5} &       \textbf{97.4} \\
+ Random Forest       &       94.0   &       93.8 \\
+ XGBoost            &       95.5 &       95.3 \\
+ Neural Network      &       95.5 &       95.3 \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -218,11 +194,11 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \toprule
 \headrow Model & Accuracy & F1-Score\\
 \midrule
- KNN             &       99.0   &       98.9 \\
- \textbf{XGBoost}         &      \textbf{100}   &      \textbf{100}   \\
- Random Forest    &       98.0   &       97.8 \\
- \textbf{SVM Classifier}             &      \textbf{100}   &      \textbf{100}   \\
  \textbf{Logisitc Regression}              &      \textbf{100}   &      \textbf{100}   \\
+ KNN             &       99.0   &       98.9 \\
+ \textbf{SVM Classifier}             &      \textbf{100}   &      \textbf{100}   \\
+ Random Forest    &       98.0   &       97.8 \\
+ \textbf{XGBoost}         &      \textbf{100}   &      \textbf{100}   \\
  \textbf{Neural Network}   &      \textbf{100}   &      \textbf{100}   \\
 \bottomrule
 \end{tabular}
@@ -236,86 +212,18 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 
 \begin{table}[hbt!]
 \begin{threeparttable}
-\caption{KNN results}
-\label{knn_results}
+\caption{GPT-2 Embeddings results}
+\label{gpt2_embeddings_results}
 \begin{tabular}{lll}
 \toprule
-\headrow Embedding Method & Accuracy & F1-Score\\
+\headrow Model & Accuracy & F1-Score\\
 \midrule
- BERT     &       95.5 &       95.2 \\
- GloVe    &       91.5 &       90.9 \\
- Word2Vec &       89.0 &       87.8 \\
- GPT-2    &       97.0 &       96.7 \\
- \textbf{RoBERTa}  &       \textbf{99.0} &       \textbf{98.9} \\
-\bottomrule
-\end{tabular}
-%\begin{tablenotes}[hang]
-%\item[]Table note
-%\item[a]First note
-%\item[b]Another table note
-%\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\begin{table}[hbt!]
-\begin{threeparttable}
-\caption{XGBoost results}
-\label{xgb_results}
-\begin{tabular}{lll}
-\toprule
-\headrow Embedding Method & Accuracy & F1-Score\\
-\midrule
- BERT     &       95.5 &       95.3 \\
- GloVe    &       96.5 &       96.3 \\
- Word2Vec &       96.5 &       96.2 \\
- GPT-2    &       98.0 &       97.8 \\
- \textbf{RoBERTa}  &       \textbf{99.5} &       \textbf{99.5} \\
-\bottomrule
-\end{tabular}
-%\begin{tablenotes}[hang]
-%\item[]Table note
-%\item[a]First note
-%\item[b]Another table note
-%\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\begin{table}[hbt!]
-\begin{threeparttable}
-\caption{Random Forest results}
-\label{rf_results}
-\begin{tabular}{lll}
-\toprule
-\headrow Embedding Method & Accuracy & F1-Score\\
-\midrule
- BERT     &       94.0 &       93.7 \\
- GloVe    &       92.5 &       92.1 \\
- Word2Vec &       94.5 &       94.0 \\
- GPT-2    &       95.0 &       94.6 \\
- \textbf{RoBERTa}  &       \textbf{97.5} &       \textbf{97.3} \\
-\bottomrule
-\end{tabular}
-%\begin{tablenotes}[hang]
-%\item[]Table note
-%\item[a]First note
-%\item[b]Another table note
-%\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\begin{table}[hbt!]
-\begin{threeparttable}
-\caption{SVM Classifier results}
-\label{svc_results}
-\begin{tabular}{lll}
-\toprule
-\headrow Embedding Method & Accuracy & F1-Score\\
-\midrule
- BERT     &       97.5 &       97.4 \\
- GloVe    &       98.5 &       98.4 \\
- Word2Vec &       98.5 &       98.4 \\
- GPT-2    &       99.5 &       99.5 \\
- \textbf{RoBERTa}  &       \textbf{100} &       \textbf{100} \\
+ Logistic Regression                 &       99.0   &       98.9 \\
+ KNN                &       96.5 &       96.2 \\
+ \textbf{SVM Classifier}                &       \textbf{99.5} &       \textbf{99.5} \\
+ Random Forest       &       96.0   &       95.7 \\
+ XGBoost            &       98.0   &       97.8 \\
+ Neural Network      &       98.5 &       98.4 \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -334,11 +242,103 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \toprule
 \headrow Embedding Method & Accuracy & F1-Score\\
 \midrule
- BERT     &       96.5 &       96.2 \\
  GloVe    &       98.0 &       97.8 \\
  Word2Vec &       98.0 &       97.9 \\
- GPT-2    &       99.0 &       98.9 \\
+ BERT     &       96.5 &       96.2 \\
  \textbf{RoBERTa}  &       \textbf{100} &       \textbf{100} \\
+ GPT-2    &       99.0 &       98.9 \\
+\bottomrule
+\end{tabular}
+%\begin{tablenotes}[hang]
+%\item[]Table note
+%\item[a]First note
+%\item[b]Another table note
+%\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[hbt!]
+\begin{threeparttable}
+\caption{KNN results}
+\label{knn_results}
+\begin{tabular}{lll}
+\toprule
+\headrow Embedding Method & Accuracy & F1-Score\\
+\midrule
+ GloVe    &       91.5 &       90.9 \\
+ Word2Vec &       89.0 &       87.8 \\
+ BERT     &       95.5 &       95.2 \\
+ \textbf{RoBERTa}  &       \textbf{99.0} &       \textbf{98.9} \\
+ GPT-2    &       97.0 &       96.7 \\
+\bottomrule
+\end{tabular}
+%\begin{tablenotes}[hang]
+%\item[]Table note
+%\item[a]First note
+%\item[b]Another table note
+%\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[hbt!]
+\begin{threeparttable}
+\caption{SVM Classifier results}
+\label{svc_results}
+\begin{tabular}{lll}
+\toprule
+\headrow Embedding Method & Accuracy & F1-Score\\
+\midrule
+ GloVe    &       98.5 &       98.4 \\
+ Word2Vec &       98.5 &       98.4 \\
+ BERT     &       97.5 &       97.4 \\
+ \textbf{RoBERTa}  &       \textbf{100} &       \textbf{100} \\
+ GPT-2    &       99.5 &       99.5 \\
+\bottomrule
+\end{tabular}
+%\begin{tablenotes}[hang]
+%\item[]Table note
+%\item[a]First note
+%\item[b]Another table note
+%\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[hbt!]
+\begin{threeparttable}
+\caption{Random Forest results}
+\label{rf_results}
+\begin{tabular}{lll}
+\toprule
+\headrow Embedding Method & Accuracy & F1-Score\\
+\midrule
+ GloVe    &       92.5 &       92.1 \\
+ Word2Vec &       94.5 &       94.0 \\
+ BERT     &       94.0 &       93.7 \\
+ \textbf{RoBERTa}  &       \textbf{97.5} &       \textbf{97.3} \\
+ GPT-2    &       95.0 &       94.6 \\
+\bottomrule
+\end{tabular}
+%\begin{tablenotes}[hang]
+%\item[]Table note
+%\item[a]First note
+%\item[b]Another table note
+%\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[hbt!]
+\begin{threeparttable}
+\caption{XGBoost results}
+\label{xgb_results}
+\begin{tabular}{lll}
+\toprule
+\headrow Embedding Method & Accuracy & F1-Score\\
+\midrule
+ GloVe    &       96.5 &       96.3 \\
+ Word2Vec &       96.5 &       96.2 \\
+ BERT     &       95.5 &       95.3 \\
+ \textbf{RoBERTa}  &       \textbf{99.5} &       \textbf{99.5} \\
+ GPT-2    &       98.0 &       97.8 \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -357,11 +357,11 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \toprule
 \headrow Embedding Method & Accuracy & F1-Score\\
 \midrule
- BERT     &       95.5 &       95.3 \\
  GloVe    &       92.5 &       91.4 \\
  Word2Vec &       97.5 &       97.3 \\
- GPT-2    &       98.5 &       98.4 \\
+ BERT     &       95.5 &       95.3 \\
  \textbf{RoBERTa}  &        \textbf{100} &        \textbf{100} \\
+ GPT-2    &       98.5 &       98.4 \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -371,3 +371,7 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 %\end{tablenotes}
 \end{threeparttable}
 \end{table}
+
+
+
+
