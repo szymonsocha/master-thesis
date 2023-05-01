@@ -37,7 +37,7 @@ The Figure~\ref{embedding_example} illustrates the graphical interpretation of W
 \label{embedding_example}
 \end{figure}
 
-Trained unsupervised machine learning algorithms handle the conversion of words into vectors from large sets of textual data. These algorithms learn to predict the context of a given word by analyzing the words with which it is associated. In this process, they learn the context of words and the semantic relationships between them. Examples of such algorithms include BERT, Glove, Word2Vec, and GPT2, which has not yet been investigated in the literature for the purpose of fake news detection.
+Trained unsupervised machine learning algorithms handle the conversion of words into vectors from large sets of textual data. These algorithms learn to predict the context of a given word by analyzing the words with which it is associated. In this process, they learn the context of words and the semantic relationships between them. Examples of such algorithms include BERT, Glove, Word2Vec, and GPT-2, which has not yet been investigated in the literature for the purpose of fake news detection.
 
 \subsubsection{GloVe}
 GloVe (Global Vectors) is an unsupervised machine learning algorithm aimed at creating word embeddings by aggregating co-occurrence matrices of words that contain information about how often individual word pairs occur in a given text corpus.
@@ -73,12 +73,14 @@ An important feature of BERT is the fact that it can be fine-tuned for use in a 
 
 In this research, I use BERT as a feature extractor. I extract embeddings for the first token ([CLS] token) from the last hidden layer of the model.
 
-\subsubsection{GPT2}
+\subsubsection{RoBERTa}
+\textit{Description of RoBERTa embedding method...}
+
+\subsubsection{GPT-2}
 Another model utilizing the transformer architecture is the GPT-2 (Generative Pre-trained Transformer 2) model. Unlike BERT, it does not process input data in two directions but rather employs a unidirectional architecture that reads data from left to right. Another distinction is that GPT-2 utilizes decoder-only transformers (while BERT employed encoder-only transformers). This difference arises from the distinct purposes of the models. BERT was designed as a tool to create various models for different applications at a low cost by adding an additional layer. Consequently, BERT employs encoders whose output comprises contextualized embeddings that can serve as inputs for further models. On the other hand, GPT-2 serves an entirely different purpose, which is text generation. Since the model's output should be comprehensible to humans, GPT-2 relies solely on decoder-only transformers.
 
 Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, unlike BERT, self-attention in GPT-2 only takes into account preceding words. Otherwise, if considering the subsequent words in the sequence, the model would incorrectly learn to predict the next word by simply returning the next word in the sequence with the highest probability of occurrence. Another difference between GPT-2 and BERT lies in the fact that GPT-2 processes data token by token (while BERT processes the entire text simultaneously). GPT-2 generates predictions for the next word based on the preceding text. The output of one iteration simultaneously serves as the input for the next iteration.
-\\
-\hl{Do zrobienia: opisac jak mozna z GPT-2 wyciagnac embeddingi}
+
 
 \subsection{Classification algorithms (WIP)}
 \textit{Describe what classification algorithms has been used and what are the pros and cons for each of them...}
@@ -101,9 +103,6 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 
 
 
-
-
-
 \subsection{Results (WIP)}
 
 \begin{table}[hbt!]
@@ -114,11 +113,12 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \toprule
 \headrow Model & Accuracy & F1-Score\\
 \midrule
- KNN                 &       95.5 &       95.2 \\
- XGBoost             &       95.5 &       95.3 \\
- Random Forest       &       94.0 &       93.7 \\
- \textbf{SVM Classifier}      &       \textbf{97.5} &       \textbf{97.4} \\
- Logistic Regression &       96.5 &       96.2 \\
+ KNN                &       95.5 &       95.2 \\
+ XGBoost            &       95.5 &       95.3 \\
+ Random Forest       &       94.0   &       93.8 \\
+ \textbf{SVM Classifier}                &       \textbf{97.5} &       \textbf{97.4} \\
+ Logistic Regression                 &       96.5 &       96.2 \\
+ Neural Network      &       95.5 &       95.3 \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -137,11 +137,12 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \toprule
 \headrow Model & Accuracy & F1-Score\\
 \midrule
- KNN                 &       91.5 &       90.9 \\
- XGBoost             &       96.5 &       96.3 \\
- Random Forest       &       92.5 &       92.1 \\
- \textbf{SVM Classifier}      &       \textbf{98.5} &       \textbf{98.4} \\
- Logistic Regression &       98.0 &       97.8 \\
+ KNN               &       92.5 &       92.0   \\
+ XGBoost           &       96,0   &       95.7 \\
+ Random Forest      &       93.5 &       93.2 \\
+ \textbf{SVM Classifier}               &       \textbf{98.5} &       \textbf{98.4} \\
+ \textbf{Logistic Regression}                &       \textbf{98.5} &       \textbf{98.4} \\
+ Neural Network     &       92.5 &       91.4 \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -160,11 +161,12 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \toprule
 \headrow Model & Accuracy & F1-Score\\
 \midrule
-KNN                 &       89.0 &       87.8 \\
-XGBoost             &       96.5 &       96.2 \\
-Random Forest       &       94.5 &       94.0 \\
-\textbf{SVM Classifier}      &       \textbf{98.5} &       \textbf{98.4} \\
-Logistic Regression &       98.0 &       97.9 \\
+ KNN            &       89.0   &       87.8 \\
+ XGBoost        &       96.0   &       95.6 \\
+ Random Forest &       94.5 &       94.1 \\
+ \textbf{SVM Classifier}            &       \textbf{98.5} &       \textbf{98.4} \\
+ Logistic Regression             &       98.0   &       97.9 \\
+ Neural Network  &       97.5 &       97.3 \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -177,17 +179,42 @@ Logistic Regression &       98.0 &       97.9 \\
 
 \begin{table}[hbt!]
 \begin{threeparttable}
-\caption{GPT2 Embeddings results}
+\caption{GPT-2 Embeddings results}
 \label{bert_embeddings_results}
 \begin{tabular}{lll}
 \toprule
 \headrow Model & Accuracy & F1-Score\\
 \midrule
-KNN & 97.0 & 96.7\\ 
-XGBoost & 98.0 & 97.8\\ 
-Random Forest & 95.0 & 94.6\\ 
-\textbf{SVM Classifier} & \textbf{99.5} & \textbf{99.5}\\ 
-Logistic Regression & 99.0 & 98.9\\ 
+ KNN                &       96.5 &       96.2 \\
+ XGBoost            &       98.0   &       97.8 \\
+ Random Forest       &       96.0   &       95.7 \\
+ \textbf{SVM Classifier}                &       \textbf{99.5} &       \textbf{99.5} \\
+ Logistic Regression                 &       99.0   &       98.9 \\
+ Neural Network      &       98.5 &       98.4 \\
+\bottomrule
+\end{tabular}
+%\begin{tablenotes}[hang]
+%\item[]Table note
+%\item[a]First note
+%\item[b]Another table note
+%\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[hbt!]
+\begin{threeparttable}
+\caption{RoBERTa Embeddings results}
+\label{bert_embeddings_results}
+\begin{tabular}{lll}
+\toprule
+\headrow Model & Accuracy & F1-Score\\
+\midrule
+ KNN             &       99.0   &       98.9 \\
+ \textbf{XGBoost}         &      \textbf{100}   &      \textbf{100}   \\
+ Random Forest    &       98.0   &       97.8 \\
+ \textbf{SVM Classifier}             &      \textbf{100}   &      \textbf{100}   \\
+ \textbf{Logisitc Regression}              &      \textbf{100}   &      \textbf{100}   \\
+ \textbf{Neural Network}   &      \textbf{100}   &      \textbf{100}   \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -209,7 +236,8 @@ Logistic Regression & 99.0 & 98.9\\
  BERT     &       95.5 &       95.2 \\
  GloVe    &       91.5 &       90.9 \\
  Word2Vec &       89.0 &       87.8 \\
- \textbf{GPT2}     &       \textbf{97.0}   &       \textbf{96.7} \\
+ GPT-2    &       97.0 &       96.7 \\
+ \textbf{RoBERTa}  &       \textbf{99.0} &       \textbf{98.9} \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -231,7 +259,8 @@ Logistic Regression & 99.0 & 98.9\\
  BERT     &       95.5 &       95.3 \\
  GloVe    &       96.5 &       96.3 \\
  Word2Vec &       96.5 &       96.2 \\
- \textbf{GPT2}     &       \textbf{98.0}   &       \textbf{97.8} \\
+ GPT-2    &       98.0 &       97.8 \\
+ \textbf{RoBERTa}  &       \textbf{99.5} &       \textbf{99.5} \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -253,7 +282,8 @@ Logistic Regression & 99.0 & 98.9\\
  BERT     &       94.0 &       93.7 \\
  GloVe    &       92.5 &       92.1 \\
  Word2Vec &       94.5 &       94.0 \\
- \textbf{GPT2}     &       \textbf{95.0}   &       \textbf{94.6} \\
+ GPT-2    &       95.0 &       94.6 \\
+ \textbf{RoBERTa}  &       \textbf{97.5} &       \textbf{97.3} \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -275,7 +305,8 @@ Logistic Regression & 99.0 & 98.9\\
  BERT     &       97.5 &       97.4 \\
  GloVe    &       98.5 &       98.4 \\
  Word2Vec &       98.5 &       98.4 \\
- \textbf{GPT2}     &       \textbf{99.5} &       \textbf{99.5} \\
+ GPT-2    &       99.5 &       99.5 \\
+ \textbf{RoBERTa}  &       \textbf{100.0} &       \textbf{100.0} \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -297,7 +328,31 @@ Logistic Regression & 99.0 & 98.9\\
  BERT     &       96.5 &       96.2 \\
  GloVe    &       98.0 &       97.8 \\
  Word2Vec &       98.0 &       97.9 \\
- \textbf{GPT2}     &       \textbf{99.0} &       \textbf{98.9} \\
+ GPT-2    &       99.0 &       98.9 \\
+ \textbf{RoBERTa}  &       \textbf{100.0} &       \textbf{100.0} \\
+\bottomrule
+\end{tabular}
+%\begin{tablenotes}[hang]
+%\item[]Table note
+%\item[a]First note
+%\item[b]Another table note
+%\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[hbt!]
+\begin{threeparttable}
+\caption{Neural Network results}
+\label{nn_results}
+\begin{tabular}{lll}
+\toprule
+\headrow Embedding Method & Accuracy & F1-Score\\
+\midrule
+ BERT     &       95.5 &       95.3 \\
+ GloVe    &       92.5 &       91.4 \\
+ Word2Vec &       97.5 &       97.3 \\
+ GPT-2    &       98.5 &       98.4 \\
+ \textbf{RoBERTa}  &        \textbf{100} &        \textbf{100} \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
