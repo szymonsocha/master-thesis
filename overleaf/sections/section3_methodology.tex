@@ -5,7 +5,6 @@ This research article aims to investigate how the use of various natural languag
 
 The dataset chosen to carry out the research, which meets the criteria outlined above for a good dataset, is \href{https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset}{\textit{Fake and real news dataset}}, obtained from the Kaggle website. The dataset comprises 40,000 observations, encompassing both authentic and fake news articles. Each observation is characterized by five variables that explicate the news item, namely, the news item's title, its content, the topic it pertains to, the date of publication, and a binary label denoting if the news is fake or not. Notably, the dataset is balanced, containing an equivalent number of true and fake news items.
 
-\\
 \hl{Do zrobienia: lepiej opisac dane, skad sa i takie tam}
 
 The raw dataset underwent a process of data cleaning and feature engineering. The topics of the news articles were concatenated with their respective content, resulting in a longer text that retains all pertinent information. The cleaned texts were further processed by removing stopwords and punctuation marks. The topic information was omitted from the analysis as it unnecessarily complicates the dataset, potentially introduces uncertainty regarding its correctness, and is difficult to obtain for new data. Importantly, introducing additional variables would add noise to the prediction results, thereby complicating the analysis of the impact of different embedding methods on prediction accuracy. Similarly, the time variable of article publication was also omitted. The resulting dataset is now ready for further analysis and for applying embedding techniques to the news content.
@@ -63,7 +62,8 @@ BERT (Bidirectional Encoder Representations from Transformers) is a deep learnin
 \label{bert_architecture}
 \end{figure}
 
-BERT belongs to the class of masked language models. This implies that the learning process of BERT can be interpreted in such a way that the model randomly masks a selected word and, based on the surrounding words (both preceding and succeeding), predicts the masked word using the mechanisms described earlier.
+BERT belongs to the class of masked language models. This implies that the learning process of BERT can be interpreted in such a way that the model randomly masks a selected word and, based on the surrounding words (both preceding and succeeding), predicts the masked word using the mechanisms described earlier. 
+Next Sentence Prediction (NSP) serves as another objective for the model during the pre-training process. In this procedure, BERT combines two randomly masked sentences as inputs. Subsequently, the model generates predictions regarding whether the given pair of sentences logically follows each other or not.
 
 A noteworthy characteristic of BERT is its pre-training capability. During the pre-training phase, the BERT model acquires contextual understanding of a given word by analyzing the surrounding words. This is achieved through the application of a masked language model (MLM), where tokens are randomly masked, and the model attempts to predict the missing word's semantics. BERT offers a variety of pre-trained models that can be utilized for diverse purposes. Specifically, the BERT-base model, employed in this study, encompasses 12 encoder stack layers, 768 hidden units, and 12 multi-head attention heads, comprising a total of 110 million parameters. The pre-training of this model was conducted on a dataset containing 11,038 books and the English edition of Wikipedia.
 
@@ -74,7 +74,9 @@ An important feature of BERT is the fact that it can be fine-tuned for use in a 
 In this research, I use BERT as a feature extractor. I extract embeddings for the first token ([CLS] token) from the last hidden layer of the model.
 
 \subsubsection{RoBERTa}
-\textit{Description of RoBERTa embedding method...}
+The Robustly Optimized BERT Approach (RoBERTa) is a modification of the BERT model. The creators of the model have modified the way in which the input data is masked. In the case of BERT, masked words were inputted to the model as input data. This is a weakness because during the training of the model in successive epochs, the model learned from the same duplicated data. RoBERTa introduces a change in the form of dynamic token masking during training in successive epochs. Additionally, another change introduced in RoBERTa is the removal of Next Sentence Prediction (NSP) during pre-training.
+Furthermore, RoBERTa is trained on a larger amount of data (160GB corpus text, with 16GB of the same data used for training BERT).
+Due to the improvements made, RoBERTa is expected to demonstrate better performance than BERT \autocite{Liu2019}.
 
 \subsubsection{GPT-2}
 Another model utilizing the transformer architecture is the GPT-2 (Generative Pre-trained Transformer 2) model. Unlike BERT, it does not process input data in two directions but rather employs a unidirectional architecture that reads data from left to right. Another distinction is that GPT-2 utilizes decoder-only transformers (while BERT employed encoder-only transformers). This difference arises from the distinct purposes of the models. BERT was designed as a tool to create various models for different applications at a low cost by adding an additional layer. Consequently, BERT employs encoders whose output comprises contextualized embeddings that can serve as inputs for further models. On the other hand, GPT-2 serves an entirely different purpose, which is text generation. Since the model's output should be comprehensible to humans, GPT-2 relies solely on decoder-only transformers.
@@ -85,18 +87,25 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \subsection{Classification algorithms (WIP)}
 \textit{Describe what classification algorithms has been used and what are the pros and cons for each of them...}
 
+\subsubsection{Logistic Regression}
+\textit{Description of Logistic Regression algorithm...}
+
 \subsubsection{K-nearest neighbors algorithm (KNN)}
 \textit{Description of KNN algorithm...}
-
-\subsubsection{XGBoost}
-\textit{Description of XGB algorithm...}
-
-\subsubsection{Random Forest}
-\textit{Description of Random Forest algorithm...}
 
 \subsubsection{SVM Classifier}
 \textit{Description of SVM Classifier algorithm...}
 
+\subsubsection{Random Forest}
+\textit{Description of Random Forest algorithm...}
+
+\subsubsection{XGBoost}
+\textit{Description of XGB algorithm...}
+
+\subsubsection{Neural Network}
+\textit{Description of Neural Network algorithm...}
+\\
+\hl{Do zrobienia: polepszyc tunowanie NN, upewnic sie ze nie ma bledow w kodzie}
 
 \subsection{Metrics (WIP)}
 \textit{Description of used performance metrics..}
@@ -180,7 +189,7 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \begin{table}[hbt!]
 \begin{threeparttable}
 \caption{GPT-2 Embeddings results}
-\label{bert_embeddings_results}
+\label{gpt2_embeddings_results}
 \begin{tabular}{lll}
 \toprule
 \headrow Model & Accuracy & F1-Score\\
@@ -204,7 +213,7 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \begin{table}[hbt!]
 \begin{threeparttable}
 \caption{RoBERTa Embeddings results}
-\label{bert_embeddings_results}
+\label{roberta_embeddings_results}
 \begin{tabular}{lll}
 \toprule
 \headrow Model & Accuracy & F1-Score\\
@@ -306,7 +315,7 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
  GloVe    &       98.5 &       98.4 \\
  Word2Vec &       98.5 &       98.4 \\
  GPT-2    &       99.5 &       99.5 \\
- \textbf{RoBERTa}  &       \textbf{100.0} &       \textbf{100.0} \\
+ \textbf{RoBERTa}  &       \textbf{100} &       \textbf{100} \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -329,7 +338,7 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
  GloVe    &       98.0 &       97.8 \\
  Word2Vec &       98.0 &       97.9 \\
  GPT-2    &       99.0 &       98.9 \\
- \textbf{RoBERTa}  &       \textbf{100.0} &       \textbf{100.0} \\
+ \textbf{RoBERTa}  &       \textbf{100} &       \textbf{100} \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
