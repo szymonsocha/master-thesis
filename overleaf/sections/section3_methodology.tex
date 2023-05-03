@@ -1,3 +1,20 @@
+\subsection{Architecture (WIP)}
+One of the important aspects of this study is to construct such an architecture that allows for the comparison of results between different models. Since the quality of predictions of models composed of various embedding methods and classification algorithms is being compared, it is necessary to ensure that the entire process is designed correctly. The individual variants of embeddings should be trained on the same data, and the classification algorithms on the same embeddings. Figure~\ref{methodology-schema_extended} illustrates the architecture designed for the purpose of comparing the results of the models in this study.
+
+\begin{figure*}
+\centering
+\includegraphics[width=0.8\linewidth]{methodology-schema_gpt2_extended.pdf}
+\caption{Architecture of each embedding-classifier model combination}
+\label{methodology-schema_extended}
+\end{figure*}
+
+The prepared dataset, previously subjected to cleansing and tokenization, has been divided into a training and testing set (further details regarding the dataset's characteristics are provided in the subsequent section). Subsequently, the data underwent an embedding procedure. The same combination of data was employed for all embedding methods utilized.
+
+The Word Embeddings obtained in the previous step served as input for the classification algorithms in the subsequent step. After each word embedding procedure, each algorithm received exactly the same set of data. Hyperparameter tuning on the training set was performed using cross-validation with random search.
+
+Finally, all combinations of 5 embedding methods and 6 classification methods resulted in 30 different fake news detection models. For each embedding-classifier combination, text classification into fake news and real news was performed on the test set created in the first step. More details about the obtained results will be presented in the Results section.
+
+
 \subsection{Dataset (WIP)}
 Access to high-quality data is a significant challenge faced in data modeling and machine learning. In the absence of high-quality data, it is impossible to construct accurate machine learning models. Poor quality data, characterized by unreliable data collection methods, a large number of errors, incompleteness, or mislabeling, can compromise the effectiveness of any machine learning algorithm. This issue is particularly pertinent in the context of datasets containing fake news, where labeling is not as straightforward as with other datasets. The task of manual labeling, which is required to obtain ready-made texts labeled as fake news or real information, can be both time-consuming and challenging, requiring substantial trust in the person performing the labeling. As such, the labeling process is prone to significant human error, which can impact the selection of an appropriate dataset.
 
@@ -8,16 +25,6 @@ The dataset chosen to carry out the research, which meets the criteria outlined 
 \hl{Do zrobienia: lepiej opisac dane, skad sa i takie tam}
 
 The raw dataset underwent a process of data cleaning and feature engineering. The topics of the news articles were concatenated with their respective content, resulting in a longer text that retains all pertinent information. The cleaned texts were further processed by removing stopwords and punctuation marks. The topic information was omitted from the analysis as it unnecessarily complicates the dataset, potentially introduces uncertainty regarding its correctness, and is difficult to obtain for new data. Importantly, introducing additional variables would add noise to the prediction results, thereby complicating the analysis of the impact of different embedding methods on prediction accuracy. Similarly, the time variable of article publication was also omitted. The resulting dataset is now ready for further analysis and for applying embedding techniques to the news content.
-
-\subsection{Architecture (WIP)}
-\textit{Description of a final model architecture..}
-
-\begin{figure*}
-\centering
-\includegraphics[width=0.8\linewidth]{methodology-schema_gpt2_extended.pdf}
-\caption{Architecture of each embedding-classifier model combination}
-\label{methodology-schema_extended}
-\end{figure*}
 
 
 \subsection{Embeddings (WIP)}
@@ -74,7 +81,7 @@ An important feature of BERT is the fact that it can be fine-tuned for use in a 
 In this research, I use BERT as a feature extractor. I extract embeddings for the first token ([CLS] token) from the last hidden layer of the model.
 
 \subsubsection{RoBERTa}
-The Robustly Optimized BERT Approach (RoBERTa) is a modification of the BERT model. The creators of the model have modified the way in which the input data is masked. In the case of BERT, masked words were inputted to the model as input data. This is a weakness because during the training of the model in successive epochs, the model learned from the same duplicated data. RoBERTa introduces a change in the form of dynamic token masking during training in successive epochs. Additionally, another change introduced in RoBERTa is the removal of Next Sentence Prediction (NSP) during pre-training.
+The Robustly Optimized BERT Approach (RoBERTa) is a modification of the BERT model. The creators of the model have modified the way in which the input data is masked. In the case of BERT, masked words were inputted to the model as input data. This is a weakness because during the training of the model in successive epochs, the model learned from the same duplicated data. RoBERTa introduces a change in the form of dynamic token masking during training in successive epochs. Additionally, another change introduced in RoBERTa is the removal of Next Sentence Prediction (NSP) during pre-training. The remainder of the architecture is identical to that of the BERT model.
 Furthermore, RoBERTa is trained on a larger amount of data (160GB corpus text, with 16GB of the same data used for training BERT).
 Due to the improvements made, RoBERTa is expected to demonstrate better performance than BERT \autocite{Liu2019}.
 
