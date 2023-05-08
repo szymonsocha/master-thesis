@@ -20,11 +20,14 @@ Access to high-quality data is a significant challenge faced in data modeling an
 
 This research article aims to investigate how the use of various natural language processing (NLP) methods influences the accuracy of fake news prediction, rather than building a model to accurately predict fake news. Therefore, when selecting a dataset, the most crucial considerations are the quality of the labeled observations and the consistency of the labeled texts across the entire dataset. Additionally, the text should closely align with the research area, as the focus of this study is on detecting fake news. To construct a universal tool for detecting fake news, the dataset should include varied topics and text characteristics, reflecting the real-world distribution as accurately as possible. In this way, the model can learn from natural data, picking up the nuances present in different texts, such as writing style, formality, and topics. However, as noted earlier, the primary objective of this article is not to construct a ready-made tool but rather to examine and impact the predictive quality of different NLP methods. 
 
-The dataset chosen to carry out the research, which meets the criteria outlined above for a good dataset, is \href{https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset}{\textit{Fake and real news dataset}}, obtained from the Kaggle website. The dataset comprises 40,000 observations, encompassing both authentic and fake news articles. Each observation is characterized by five variables that explicate the news item, namely, the news item's title, its content, the topic it pertains to, the date of publication, and a binary label denoting if the news is fake or not. Notably, the dataset is balanced, containing an equivalent number of true and fake news items.
+\textit{The dataset chosen to carry out the research, which meets the criteria outlined above for a good dataset, is \href{https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset}{\textit{Fake and real news dataset}}, obtained from the Kaggle website. The dataset comprises 40,000 observations, encompassing both authentic and fake news articles. Each observation is characterized by five variables that explicate the news item, namely, the news item's title, its content, the topic it pertains to, the date of publication, and a binary label denoting if the news is fake or not. Notably, the dataset is balanced, containing an equivalent number of true and fake news items.}
 
-\hl{Do zrobienia: lepiej opisac dane, skad sa i takie tam}
+\hl{Do zrobienia: zrobic reasearch o datasecie, z duzym prawdopodobienstwem ten dataset jest slaby, poszukac lepszego, nastepnie lepiej opisac dane niz w tym przypadku, skad sa i takie tam}
 
-The raw dataset underwent a process of data cleaning and feature engineering. The topics of the news articles were concatenated with their respective content, resulting in a longer text that retains all pertinent information. The cleaned texts were further processed by removing stopwords and punctuation marks. The topic information was omitted from the analysis as it unnecessarily complicates the dataset, potentially introduces uncertainty regarding its correctness, and is difficult to obtain for new data. Importantly, introducing additional variables would add noise to the prediction results, thereby complicating the analysis of the impact of different embedding methods on prediction accuracy. Similarly, the time variable of article publication was also omitted. The resulting dataset is now ready for further analysis and for applying embedding techniques to the news content.
+% tak jest - dopisać skąd są to newsy (w sensie gdzie publikowane, w jakim okresie, jak były definiowane fake newsy, itp. czyli ogólnie dłuższy opis wykorzystanych danych 
+
+The raw dataset underwent %you did it? z opisu to nie wynika - jeśli Ty to zrobiłeś napisz wprost, bo warto opisać wszystkie kroki swojej analizy; ze zdania w formie biernej można wnioskować, że ktoś zrobił to wcześniej, a Ty wykozrystujesz już przygotowany zbiór danych
+a process of data cleaning and feature engineering. The topics of the news articles were concatenated with their respective content, resulting in a longer text that retains all pertinent information. The cleaned texts were further processed by removing stopwords and punctuation marks. The topic information was omitted from the analysis as it unnecessarily complicates the dataset, potentially introduces uncertainty regarding its correctness, and is difficult to obtain for new data. Importantly, introducing additional variables would add noise to the prediction results, thereby complicating the analysis of the impact of different embedding methods on prediction accuracy. Similarly, the time variable of article publication was also omitted. The resulting dataset is now ready for further analysis and for applying embedding techniques to the news content. % to ostatnie zdanie niekoniecznie w tek formie (styl)
 
 
 \subsection{Embeddings (WIP)}
@@ -129,12 +132,12 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \toprule
 \headrow Model & Accuracy & F1-Score\\
 \midrule
- \textbf{Logistic Regression}                &       \textbf{98.5} &       \textbf{98.4} \\
- KNN               &       92.5 &       92.0   \\
- \textbf{SVM Classifier}               &       \textbf{98.5} &       \textbf{98.4} \\
- Random Forest      &       93.5 &       93.2 \\
- XGBoost           &       96,0   &       95.7 \\
- Neural Network     &       92.5 &       91.4 \\
+ Logistic Regression                &       53.4 &       33.2 \\
+ KNN               &       53.7 &       34.7 \\
+ SVM Classifier               &       56.1 &       34.4 \\
+ Random Forest      &       \textbf{61.2} &       22.9 \\
+ XGBoost           &       53.0   &       36.4 \\
+ Neural Network     &       52.5 &       \textbf{37.8} \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -153,12 +156,12 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \toprule
 \headrow Model & Accuracy & F1-Score\\
 \midrule
- Logistic Regression             &       98.0   &       97.9 \\
- \textbf{SVM Classifier}            &       \textbf{98.5} &       \textbf{98.4} \\
- KNN            &       89.0   &       87.8 \\
- Random Forest &       94.5 &       94.1 \\
- XGBoost        &       96.0   &       95.6 \\
- Neural Network  &       97.5 &       97.3 \\
+ Logisitc Regression             &       59.0   &       \textbf{40.7} \\
+ KNN            &       55.5 &       40.0   \\
+ SVM Classifier            &       59.3 &       39.2 \\
+ Random Forest &       \textbf{62.9} &       29.9 \\
+ XGBoost        &       56.3 &       38.2 \\
+ Neural Network  &       60.1 &       40.0   \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -177,12 +180,12 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \toprule
 \headrow Model & Accuracy & F1-Score\\
 \midrule
- Logistic Regression                 &       96.5 &       96.2 \\
- KNN                &       95.5 &       95.2 \\
- \textbf{SVM Classifier}                &       \textbf{97.5} &       \textbf{97.4} \\
- Random Forest       &       94.0   &       93.8 \\
- XGBoost            &       95.5 &       95.3 \\
- Neural Network      &       95.5 &       95.3 \\
+ Logistic Regression                 &       52.8 &       34.6 \\
+ KNN                &       53.1 &       \textbf{35.7} \\
+ SVM Classifier                &       50.4 &       33.0   \\
+ Random Forest       &       57.9 &       22.4 \\
+ XGBoost            &       52.3 &       34.8 \\
+ Neural Network      &       \textbf{59.6} &       17.9 \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -201,12 +204,12 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \toprule
 \headrow Model & Accuracy & F1-Score\\
 \midrule
- \textbf{Logisitc Regression}              &      \textbf{100}   &      \textbf{100}   \\
- KNN             &       99.0   &       98.9 \\
- \textbf{SVM Classifier}             &      \textbf{100}   &      \textbf{100}   \\
- Random Forest    &       98.0   &       97.8 \\
- \textbf{XGBoost}         &      \textbf{100}   &      \textbf{100}   \\
- \textbf{Neural Network}   &      \textbf{100}   &      \textbf{100}   \\
+ Logistic Regression              &       51.9 &       38.0   \\
+ KNN             &       52.8 &       \textbf{38.2} \\
+ SVM Classifier             &       52.9 &       36.0   \\
+ Random Forest    &       61.4 &       19.7 \\
+ XGBoost         &       53.9 &       36.2 \\
+ Neural Network   &       \textbf{62.5} &        9.5 \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -225,12 +228,12 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \toprule
 \headrow Model & Accuracy & F1-Score\\
 \midrule
- Logistic Regression                 &       99.0   &       98.9 \\
- KNN                &       96.5 &       96.2 \\
- \textbf{SVM Classifier}                &       \textbf{99.5} &       \textbf{99.5} \\
- Random Forest       &       96.0   &       95.7 \\
- XGBoost            &       98.0   &       97.8 \\
- Neural Network      &       98.5 &       98.4 \\
+ Logistic Regression                 &       55.2 &       37.6 \\
+ KNN                &       48.5 &       \textbf{46.6} \\
+ SVM Classifier                &       55.6 &       35.7 \\
+ Random Forest       &       \textbf{58.2} &       17.2 \\
+ XGBoost            &       52.6 &       35.9 \\
+ Neural Network      &       56.4 &       29.0   \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -249,11 +252,11 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \toprule
 \headrow Embedding Method & Accuracy & F1-Score\\
 \midrule
- GloVe    &       98.0 &       97.8 \\
- Word2Vec &       98.0 &       97.9 \\
- BERT     &       96.5 &       96.2 \\
- \textbf{RoBERTa}  &       \textbf{100} &       \textbf{100} \\
- GPT-2    &       99.0 &       98.9 \\
+ GloVe    &       53.4 &       33.2 \\
+ Word2Vec &       \textbf{59.0} &       \textbf{40.7} \\
+ BERT     &       52.8 &       34.6 \\
+ RoBERTa  &       51.9 &       38.0 \\
+ GPT-2    &       55.2 &       37.6 \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -272,11 +275,11 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \toprule
 \headrow Embedding Method & Accuracy & F1-Score\\
 \midrule
- GloVe    &       91.5 &       90.9 \\
- Word2Vec &       89.0 &       87.8 \\
- BERT     &       95.5 &       95.2 \\
- \textbf{RoBERTa}  &       \textbf{99.0} &       \textbf{98.9} \\
- GPT-2    &       97.0 &       96.7 \\
+ GloVe    &       53.7 &       34.7 \\
+ Word2Vec &       \textbf{55.5} &       40.0 \\
+ BERT     &       53.1 &       35.7 \\
+ RoBERTa  &       52.8 &       38.2 \\
+ GPT-2    &       48.5 &       \textbf{46.6} \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -295,11 +298,11 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \toprule
 \headrow Embedding Method & Accuracy & F1-Score\\
 \midrule
- GloVe    &       98.5 &       98.4 \\
- Word2Vec &       98.5 &       98.4 \\
- BERT     &       97.5 &       97.4 \\
- \textbf{RoBERTa}  &       \textbf{100} &       \textbf{100} \\
- GPT-2    &       99.5 &       99.5 \\
+ GloVe    &       56.1 &       34.4 \\
+ Word2Vec &       \textbf{59.3} &       \textbf{39.2} \\
+ BERT     &       50.4 &       33.0 \\
+ RoBERTa  &       52.9 &       36.0 \\
+ GPT-2    &       55.6 &       35.7 \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -318,11 +321,11 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \toprule
 \headrow Embedding Method & Accuracy & F1-Score\\
 \midrule
- GloVe    &       92.5 &       92.1 \\
- Word2Vec &       94.5 &       94.0 \\
- BERT     &       94.0 &       93.7 \\
- \textbf{RoBERTa}  &       \textbf{97.5} &       \textbf{97.3} \\
- GPT-2    &       95.0 &       94.6 \\
+ GloVe    &       61.2 &       22.9 \\
+ Word2Vec &       \textbf{62.9} &       \textbf{29.9} \\
+ BERT     &       57.9 &       22.4 \\
+ RoBERTa  &       61.4 &       19.7 \\
+ GPT-2    &       58.2 &       17.2 \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -341,11 +344,11 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \toprule
 \headrow Embedding Method & Accuracy & F1-Score\\
 \midrule
- GloVe    &       96.5 &       96.3 \\
- Word2Vec &       96.5 &       96.2 \\
- BERT     &       95.5 &       95.3 \\
- \textbf{RoBERTa}  &       \textbf{99.5} &       \textbf{99.5} \\
- GPT-2    &       98.0 &       97.8 \\
+ GloVe    &       53.0 &       36.4 \\
+ Word2Vec &       \textbf{56.3} &       \textbf{38.2} \\
+ BERT     &       52.3 &       34.8 \\
+ RoBERTa  &       53.9 &       36.2 \\
+ GPT-2    &       52.6 &       35.9 \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -364,11 +367,11 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 \toprule
 \headrow Embedding Method & Accuracy & F1-Score\\
 \midrule
- GloVe    &       92.5 &       91.4 \\
- Word2Vec &       97.5 &       97.3 \\
- BERT     &       95.5 &       95.3 \\
- \textbf{RoBERTa}  &        \textbf{100} &        \textbf{100} \\
- GPT-2    &       98.5 &       98.4 \\
+ GloVe    &       52.5 &       37.8 \\
+ Word2Vec &       60.1 &       \textbf{40.0} \\
+ BERT     &       59.6 &       17.9 \\
+ RoBERTa  &       \textbf{62.5} &        9.5 \\
+ GPT-2    &       56.4 &       29.0 \\
 \bottomrule
 \end{tabular}
 %\begin{tablenotes}[hang]
@@ -378,7 +381,4 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 %\end{tablenotes}
 \end{threeparttable}
 \end{table}
-
-
-
 
