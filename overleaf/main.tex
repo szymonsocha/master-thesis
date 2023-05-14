@@ -1,54 +1,152 @@
-\documentclass[
-  journal=largetwo,
-  manuscript=article-type,
-  year=2023,
-  volume=1,
-]{cup-journal}
+% Niniejszy plik stanowi przykład formatowania pracy magisterskiej na
+% Wydziale MIM UW.  Szkielet użytych poleceń można wykorzystywać do
+% woli, np. formatujac wlasna prace.
+%
+% Zawartosc merytoryczna stanowi oryginalnosiagniecie
+% naukowosciowe Marcina Wolinskiego.  Wszelkie prawa zastrzeżone.
+%
+% Copyright (c) 2001 by Marcin Woliński <M.Wolinski@gust.org.pl>
+% Poprawki spowodowane zmianami przepisów - Marcin Szczuka, 1.10.2004
+% Poprawki spowodowane zmianami przepisow i ujednolicenie 
+% - Seweryn Karłowicz, 05.05.2006
+% Dodanie wielu autorów i tłumaczenia na angielski - Kuba Pochrybniak, 29.11.2016
 
-\usepackage{amsmath}
-\usepackage[nopatch]{microtype}
-\usepackage{booktabs}
-\usepackage{subfiles}
-\usepackage{soul} % write strikethrough text
+% dodaj opcję [licencjacka] dla pracy licencjackiej
+% dodaj opcję [en] dla wersji angielskiej (mogą być obie: [licencjacka,en])
+\documentclass[magisterska,en]{mgr}
+
+% Load packages
+\usepackage{biblatex}
+\usepackage{graphicx}
+\usepackage{xcolor, soul}
+\usepackage{hyperref}
 \usepackage{multirow}
-\usepackage{hyperref} 
+\usepackage{rotating}
+\usepackage{subfiles}
+\usepackage{csquotes}
 
+\usepackage{makecell} % for more vertical space in cells
+\setcellgapes{5pt}
 
-\title{Exploring the Efficacy of BERT for Improving Fake News Detection Across Different Types of Machine Learning Models}
-
-% alternative title: Is GPT2 all you need for fake news detection?
-
-\author{S. Socha}
-\affiliation{Faculty of Economic Sciences, University of Warsaw, Warsaw, Poland}
-\email[S. Socha]{s.socha2@student.uw.edu.pl}
+\DefineBibliographyStrings{english}{%
+  bibliography = {References},
+}
 
 \addbibresource{bibliography.bib}
 
-\keywords{fake news detection, NLP, embeddings, classification} %% First letter not capped
+% Dane magistranta:
+\autor{Szymon Socha}{411462}
+
+% Dane magistrantów:
+%\autor{Autor Zerowy}{342007}
+%\autori{Autor Pierwszy}{342013}
+%\autorii{Drugi Autor-Z-Rzędu}{231023}
+%\autoriii{Trzeci z Autorów}{777321}
+%\autoriv{Autor nr Cztery}{432145}
+%\autorv{Autor nr Pięć}{342011}
+
+\title{Is GPT-2 all you need for fake news detection?}
+\titlepl{Czy GPT-2 to jedyne, czego potrzebujesz do detekcji fake newsów?}
+
+% OLD TITLE: Exploring the Efficacy of BERT for Improving Fake News Detection Across Different Types of Machine Learning Models 
+
+
+
+%\tytulang{An implementation of a difference blabalizer based on the theory of $\sigma$ -- $\rho$ phetors}
+
+%kierunek: 
+% - matematyka, informacyka, ...
+% - Mathematics, Computer Science, ...
+\kierunek{Data Science and Business Analytics}
+
+% informatyka - nie okreslamy zakresu (opcja zakomentowana)
+% matematyka - zakres moze pozostac nieokreslony,
+% a jesli ma byc okreslony dla pracy mgr,
+% to przyjmuje jedna z wartosci:
+% {metod matematycznych w finansach}
+% {metod matematycznych w ubezpieczeniach}
+% {matematyki stosowanej}
+% {nauczania matematyki}
+% Dla pracy licencjackiej mamy natomiast
+% mozliwosc wpisania takiej wartosci zakresu:
+% {Jednoczesnych Studiow Ekonomiczno--Matematycznych}
+
+% \zakres{Tu wpisac, jesli trzeba, jedna z opcji podanych wyzej}
+
+% Praca wykonana pod kierunkiem:
+% (podać tytuł/stopień imię i nazwisko opiekuna
+% Instytut
+% ew. Wydział ew. Uczelnia (jeżeli nie MIM UW))
+\opiekun{dr hab. Piotr Wójcik\\
+  Department of Quantitative Finance\\
+  }
+
+% miesiąc i~rok:
+\date{June 2023}
+
+%Podać dziedzinę wg klasyfikacji Socrates-Erasmus:
+\dziedzina{ 
+%11.0 Matematyka, Informatyka:\\ 
+%11.1 Matematyka\\ 
+%11.2 Statystyka\\ 
+%11.3 Informatyka\\ 
+%11.4 Sztuczna inteligencja\\ 
+%11.5 Nauki aktuarialne\\
+%11.9 Inne nauki matematyczne i informatyczne
+\hl{Do wypelnienia}
+}
+
+%Klasyfikacja tematyczna wedlug AMS (matematyka) lub ACM (informatyka)
+\klasyfikacja{
+%D. Software\\
+%D.127. Blabalgorithms\\
+%D.127.6. Numerical blabalysis
+\hl{Do wypelnienia}
+}
+
+% Słowa kluczowe:
+\keywords{fake news detection, NLP, embeddings, classification}
+
+% Tu jest dobre miejsce na Twoje własne makra i~środowiska:
+\newtheorem{defi}{Definicja}[section]
+
+% koniec definicji
 
 \begin{document}
+\maketitle
 
+%tu idzie streszczenie na strone poczatkowa
 \begin{abstract}
-Recent events such as the COVID-19 pandemic and the conflict in Ukraine have demonstrated that disinformation has reached unprecedented levels. The proliferation of disinformation methods and their increasingly sophisticated concealment techniques have highlighted the need for more powerful tools for detecting it. In this study, I investigate the efficacy of Bidirectional Encoder Representations from Transformers (BERT) in enhancing fake news detection performance across various machine learning algorithms. The results of this research demonstrate that integrating BERT is likely to enhance prediction accuracy. I show that... \textit{WIP (to be finished after paper is finished)...}
+    Recent events such as the COVID-19 pandemic and the conflict in Ukraine have demonstrated that disinformation has reached unprecedented levels. The proliferation of disinformation methods and their increasingly sophisticated concealment techniques have highlighted the need for more powerful tools for detecting it. In this study, I investigate the efficacy of Bidirectional Encoder Representations from Transformers (BERT) in enhancing fake news detection performance across various machine learning algorithms. The results of this research demonstrate that integrating BERT is likely to enhance prediction accuracy. I show that... \textit{WIP (to be finished after paper is finished)...}
 \end{abstract}
 
+\tableofcontents
+%\listoffigures
+%\listoftables
 
-\section{Introduction \textit{(WIP)}}
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
 \subfile{sections/section1_introduction}
 
-\section{Related Work \textit{(WIP)}}
+\chapter{Related Work}\label{r:related_work}
 \subfile{sections/section2_relatedwork}
 
-\section{Methodology \textit{(WIP)}}
+\chapter{Methodology}\label{r:methodology}
 \subfile{sections/section3_methodology}
 
-\section{Conclusion \textit{(WIP)}}
+\chapter{Conclusion}\label{r:conclusion}
 \subfile{sections/section4_conclusion}
 
+\appendix
 
-
-\printendnotes
-
-\printbibliography
+%\begin{thebibliography}{99}
+%\addcontentsline{toc}{chapter}{Bibliography}
+\printbibliography[heading=bibintoc]
 
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% coding: latin-2
+%%% End:

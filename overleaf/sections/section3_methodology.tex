@@ -1,9 +1,10 @@
-\subsection{Architecture (WIP)}
+\section{Architecture}
+
 One of the important aspects of this study is to construct such an architecture that allows for the comparison of results between different models. Since the quality of predictions of models composed of various embedding methods and classification algorithms is being compared, it is necessary to ensure that the entire process is designed correctly. The individual variants of embeddings should be trained on the same data, and the classification algorithms on the same embeddings. Figure~\ref{methodology-schema_extended} illustrates the architecture designed for the purpose of comparing the results of the models in this study.
 
 \begin{figure*}
 \centering
-\includegraphics[width=0.8\linewidth]{methodology-schema_gpt2_extended.pdf}
+\includegraphics[width=0.95\linewidth]{methodology-schema_gpt2_extended.pdf}
 \caption{Architecture of each embedding-classifier model combination}
 \label{methodology-schema_extended}
 \end{figure*}
@@ -14,24 +15,21 @@ The Word Embeddings obtained in the previous step served as input for the classi
 
 Finally, all combinations of 5 embedding methods and 6 classification methods resulted in 30 different fake news detection models. For each embedding-classifier combination, text classification into fake news and real news was performed on the test set created in the first step. More details about the obtained results will be presented in the Results section.
 
+\section{Dataset}
 
-\subsection{Dataset (WIP)}
 Access to high-quality data is a significant challenge faced in data modeling and machine learning. In the absence of high-quality data, it is impossible to construct accurate machine learning models. Poor quality data, characterized by unreliable data collection methods, a large number of errors, incompleteness, or mislabeling, can compromise the effectiveness of any machine learning algorithm. This issue is particularly pertinent in the context of datasets containing fake news, where labeling is not as straightforward as with other datasets. The task of manual labeling, which is required to obtain ready-made texts labeled as fake news or real information, can be both time-consuming and challenging, requiring substantial trust in the person performing the labeling. As such, the labeling process is prone to significant human error, which can impact the selection of an appropriate dataset.
 
 This research article aims to investigate how the use of various natural language processing (NLP) methods influences the accuracy of fake news prediction, rather than building a model to accurately predict fake news. Therefore, when selecting a dataset, the most crucial considerations are the quality of the labeled observations and the consistency of the labeled texts across the entire dataset. Additionally, the text should closely align with the research area, as the focus of this study is on detecting fake news. To construct a universal tool for detecting fake news, the dataset should include varied topics and text characteristics, reflecting the real-world distribution as accurately as possible. In this way, the model can learn from natural data, picking up the nuances present in different texts, such as writing style, formality, and topics. However, as noted earlier, the primary objective of this article is not to construct a ready-made tool but rather to examine and impact the predictive quality of different NLP methods. 
 
-The dataset selected for the research that meets the above criteria is the \href{https://huggingface.co/datasets/liar}{\textit{LIAR}} dataset, a publicly available dataset for detecting fake news presented by Wang in his 2017 paper. The dataset consists of 12,800 manually labeled texts collected from POLITIFACT.COM. These texts are characterized by different contexts, and each of them has been verified by POLITIFACT.COM editors. The texts have been labeled into 6 fine-grained labels evaluating the degree of truthfulness of the text: \textit{pants-fire}, \textit{false}, \textit{barely-true}, \textit{half-true}, \textit{mostly-true}, and \textit{true} \autocite{wang-2017-liar}.
+The dataset selected for the research that meets the above criteria is the \href{https://huggingface.co/datasets/liar}{LIAR} dataset, a publicly available dataset for detecting fake news presented by Wang in his 2017 paper. The dataset consists of 12,800 manually labeled texts collected from POLITIFACT.COM. These texts are characterized by different contexts, and each of them has been verified by POLITIFACT.COM editors. The texts have been labeled into 6 fine-grained labels evaluating the degree of truthfulness of the text: \textit{pants-fire}, \textit{false}, \textit{barely-true}, \textit{half-true}, \textit{mostly-true}, and \textit{true} \autocite{wang-2017-liar}.
 
 In the context of this paper, I do not deal with multi-class classification. Instead, I reduce the number of classes to two, classifying \textit{true} and \textit{mostly-true} as true news, and the remaining as fake news. As a result, I obtain a binary classification of text into true news and fake news. In the training set, 7,466 observations are classified as true news compared to 4,058 pieces of information classified as false. In the test set, there are 818 true news and 449 fake news.  Both the training and test sets have a similar ratio of the two classes. I arbitrarily consider this dataset to be balanced and do not attempt to further balance it.
-
-% tak jest - dopisać skąd są to newsy (w sensie gdzie publikowane, w jakim okresie, jak były definiowane fake newsy, itp. czyli ogólnie dłuższy opis wykorzystanych danych 
-% Szymon: Zrobione. Zbiór danych podmieniony i lepiej opisany
 
 The raw dataset underwent %you did it? z opisu to nie wynika - jeśli Ty to zrobiłeś napisz wprost, bo warto opisać wszystkie kroki swojej analizy; ze zdania w formie biernej można wnioskować, że ktoś zrobił to wcześniej, a Ty wykozrystujesz już przygotowany zbiór danych
 a process of data cleaning and feature engineering. The topics of the news articles were concatenated with their respective content, resulting in a longer text that retains all pertinent information. The cleaned texts were further processed by removing stopwords and punctuation marks. The topic information was omitted from the analysis as it unnecessarily complicates the dataset, potentially introduces uncertainty regarding its correctness, and is difficult to obtain for new data. Importantly, introducing additional variables would add noise to the prediction results, thereby complicating the analysis of the impact of different embedding methods on prediction accuracy. Similarly, the time variable of article publication was also omitted. The resulting dataset is now ready for further analysis and for applying embedding techniques to the news content. % to ostatnie zdanie niekoniecznie w tek formie (styl)
 
+\section{Embeddings}
 
-\subsection{Embeddings (WIP)}
 The next step after cleaning the data is to convert it in a way that is understandable to the computer. Textual data have the characteristic of forming a coherent whole. Individual letters form words, words form sentences, and sentences form longer pieces of text with a logical structure. Natural language is full of nuances. The same words can have different meanings and emotional connotations depending on the context. Understanding language comes naturally to humans and does not pose major difficulties. The human brain easily captures the appropriate context of words and their meaning, combining them into a logical and coherent text.
 
 However, computers operate in a completely different way than the human brain. Computers are only capable of analyzing sequences of bits, which when arranged in a specific order, yield a result in the form of an element of a larger whole. This way, a sequence of bits can be presented as individual letters. Further, a sequence of letters can be represented as words. Then, in the tokenization process, individual words can be assigned a specific number. This way, the computer is able to decode the data represented by these words into something it can understand.
@@ -42,33 +40,33 @@ The Figure~\ref{embedding_example} illustrates the graphical interpretation of W
 
 \begin{figure}[hbt!]
 \centering
-\includegraphics[width=0.55\linewidth]{embedding_example.pdf}
+\includegraphics[width=0.4\linewidth]{embedding_example.pdf}
 \caption{Similar words are closer together}
 \label{embedding_example}
 \end{figure}
 
 Trained unsupervised machine learning algorithms handle the conversion of words into vectors from large sets of textual data. These algorithms learn to predict the context of a given word by analyzing the words with which it is associated. In this process, they learn the context of words and the semantic relationships between them. Examples of such algorithms include BERT, Glove, Word2Vec, and GPT-2, which has not yet been investigated in the literature for the purpose of fake news detection.
 
-\subsubsection{GloVe}
+\subsection{GloVe}
 GloVe (Global Vectors) is an unsupervised machine learning algorithm aimed at creating word embeddings by aggregating co-occurrence matrices of words that contain information about how often individual word pairs occur in a given text corpus.
 
 The starting point is to create a co-occurrence matrix. The values in this matrix indicate how often a given word pair occurs together. The next step is to calculate the probability of one word occurring in the presence of another word, or rather the ratio between successive probabilities \autocite{Pennington2014}. Without delving into mathematical details, word embeddings are obtained using a matrix subjected to factorization in a process similar to dimensionality reduction \autocite{Albrecht2020}.
 
 It is possible to use pre-trained word vectors trained on large text datasets. In this paper, a model trained on Common Crawl was used, consisting of 840 billion tokens and 2.2 million words, which allowed for obtaining 300-dimensional vectors for each word.
 
-\subsubsection{Word2Vec}
+\subsection{Word2Vec}
 The Word2Vec algorithm is yet another method for obtaining word embeddings. Unlike GloVe method, it is not a method that consists of a single, homogeneous algorithm. Word2Vec can be based on two distinct models: the CBOW and Skip-Gram Model.
 
 The functioning of these two algorithms can be intuitively interpreted as two opposites. CBOW works as a model that predicts a given word based on its context. On the other hand, the Skip-Gram Model is a model that predicts the context of a given word, i.e., the words preceding and following it. Both models are built on a 3-layer neural network with an input layer, a hidden layer, and an output layer.
 
 The originator of the Word2Vec method recommends using the Skip-Gram Model with negative sampling, which outperforms other variants in research. In this study, pre-trained vectors were used, trained on a portion of the Google News dataset consisting of about 100 billion words. The model consists of 300-dimensional vectors for 3 million words and phrases. It was not specified which Word2Vec method was used to obtain these vectors \autocite{Mikolov2013}.
 
-\subsubsection{BERT}
+\subsection{BERT}
 BERT (Bidirectional Encoder Representations from Transformers) is a deep learning Large Language Model founded on the transformer self-attention mechanism. The transformer architecture incorporates encoders responsible for assimilating input data and assigning importance weights to individual words via the self-attention mechanism. This allows BERT to acquire an understanding of contextual dependencies among words within a sentence. Unlike sequential directional models, which process textual input data in a linear fashion, transformer encoders simultaneously process all words, resulting in an inherently bidirectional nature \autocite{Vaswani2017}. The bidirectional sentence-level classification architecture of BERT is depicted in the provided Figure~\ref{bert_architecture}.
 
 \begin{figure}[hbt!]
 \centering
-\includegraphics[width=0.75\linewidth]{bert_architecture.png}
+\includegraphics[width=0.6\linewidth]{bert_architecture.png}
 \caption{BERT model architecture \autocite{Devlin2018}}
 \label{bert_architecture}
 \end{figure}
@@ -84,302 +82,125 @@ An important feature of BERT is the fact that it can be fine-tuned for use in a 
 
 In this research, I use BERT as a feature extractor. I extract embeddings for the first token ([CLS] token) from the last hidden layer of the model.
 
-\subsubsection{RoBERTa}
+\subsection{RoBERTa}
 The Robustly Optimized BERT Approach (RoBERTa) is a modification of the BERT model. The creators of the model have modified the way in which the input data is masked. In the case of BERT, masked words were inputted to the model as input data. This is a weakness because during the training of the model in successive epochs, the model learned from the same duplicated data. RoBERTa introduces a change in the form of dynamic token masking during training in successive epochs. Additionally, another change introduced in RoBERTa is the removal of Next Sentence Prediction (NSP) during pre-training. The remainder of the architecture is identical to that of the BERT model.
 Furthermore, RoBERTa is trained on a larger amount of data (160GB corpus text, with 16GB of the same data used for training BERT).
 Due to the improvements made, RoBERTa is expected to demonstrate better performance than BERT \autocite{Liu2019}.
 
-\subsubsection{GPT-2}
+\subsection{GPT-2}
 Another model utilizing the transformer architecture is the GPT-2 (Generative Pre-trained Transformer 2) model. Unlike BERT, it does not process input data in two directions but rather employs a unidirectional architecture that reads data from left to right. Another distinction is that GPT-2 utilizes decoder-only transformers (while BERT employed encoder-only transformers). This difference arises from the distinct purposes of the models. BERT was designed as a tool to create various models for different applications at a low cost by adding an additional layer. Consequently, BERT employs encoders whose output comprises contextualized embeddings that can serve as inputs for further models. On the other hand, GPT-2 serves an entirely different purpose, which is text generation. Since the model's output should be comprehensible to humans, GPT-2 relies solely on decoder-only transformers.
 
 Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, unlike BERT, self-attention in GPT-2 only takes into account preceding words. Otherwise, if considering the subsequent words in the sequence, the model would incorrectly learn to predict the next word by simply returning the next word in the sequence with the highest probability of occurrence. Another difference between GPT-2 and BERT lies in the fact that GPT-2 processes data token by token (while BERT processes the entire text simultaneously). GPT-2 generates predictions for the next word based on the preceding text. The output of one iteration simultaneously serves as the input for the next iteration.
 
 
-\subsection{Classification algorithms (WIP)}
+\section{Classification algorithms (WIP)}
 \textit{Describe what classification algorithms has been used and what are the pros and cons for each of them...}
 
-\subsubsection{Logistic Regression}
+\subsection{Logistic Regression}
 \textit{Description of Logistic Regression algorithm...}
 
-\subsubsection{K-nearest neighbors algorithm (KNN)}
+\subsection{K-nearest neighbors algorithm (KNN)}
 \textit{Description of KNN algorithm...}
 
-\subsubsection{SVM Classifier}
+\subsection{SVM Classifier}
 \textit{Description of SVM Classifier algorithm...}
 
-\subsubsection{Random Forest}
+\subsection{Random Forest}
 \textit{Description of Random Forest algorithm...}
 
-\subsubsection{XGBoost}
+\subsection{XGBoost}
 \textit{Description of XGB algorithm...}
 
-\subsubsection{Neural Network}
+\subsection{Neural Network}
 \textit{Description of Neural Network algorithm...}
 \\
 \hl{Do zrobienia: polepszyc tunowanie NN, upewnic sie ze nie ma bledow w kodzie}
 
-\subsection{Metrics (WIP)}
+\section{Metrics (WIP)}
 \textit{Description of used performance metrics..}
 
 
+\section{Results (WIP)}
 
-\subsection{Results (WIP)}
+\begin{table}[htb]
+\centering
+\begin{tabular}{l|c|c|c}
+\hline
 
-\begin{table}[hbt!]
-\begin{threeparttable}
-\caption{GloVe Embeddings results}
-\label{glove_embeddings_results}
-\begin{tabular}{lll}
-\toprule
-\headrow Model & Accuracy & F1-Score\\
-\midrule
- Logistic Regression                &       53.4 &       33.2 \\
- KNN               &       53.7 &       34.7 \\
- SVM Classifier               &       56.1 &       34.4 \\
- Random Forest      &       \textbf{61.2} &       22.9 \\
- XGBoost           &       53.0   &       36.4 \\
- Neural Network     &       52.5 &       \textbf{37.8} \\
-\bottomrule
+% OLD
+%\multicolumn{2}{c|}{\multirow{2}{*}{Model}} & \multicolumn{2}{c}{Score} \\
+%\cline{3-4}
+%\multicolumn{1}{l}{} & & Accuracy & F1-Score\\
+
+% NEW
+\multicolumn{2}{c|}{Model} & \multicolumn{2}{c}{Score} \\
+\cline{1-4}
+Embedding method & Classification method & Accuracy & F1-Score\\
+
+\hline
+\multirow{6}{*}{GloVe}
+    & Logistic Regression & 53.4 & 33.2 \\
+    & KNN & 53.7 & 34.7 \\
+    & SVM Classifier & 56.1 & 34.4 \\
+    & Random Forest & \textbf{61.2} & 22.9 \\
+    & XGBoost & 53.0 & 36.4 \\
+    & Neural Network & 52.5 & \textbf{37.8} \\
+\hline
+\multirow{6}{*}{Word2Vec}
+    & Logistic Regression & 59.0 & \textbf{40.7} \\
+    & KNN & 55.5 & 40.0 \\
+    & SVM Classifier & 59.3 & 39.2 \\
+    & Random Forest & \textbf{62.9} & 29.9 \\
+    & XGBoost & 56.3 & 38.2 \\
+    & Neural Network & 60.1 & 40.0 \\
+\hline
+\multirow{6}{*}{BERT} 
+    & Logistic Regression & 52.8 & 34.6 \\
+    & KNN & 53.1 & \textbf{35.7} \\
+    & SVM Classifier & 50.4 & 33.0   \\
+    & Random Forest & 57.9 & 22.4 \\
+    & XGBoost & 52.3 & 34.8 \\
+    & Neural Network & \textbf{59.6} & 17.9 \\
+\hline
+\multirow{6}{*}{RoBERTa} 
+    & Logistic Regression & 51.9 & 38.0 \\
+    & KNN & 52.8 & \textbf{38.2} \\
+    & SVM Classifier & 52.9 & 36.0 \\
+    & Random Forest & 61.4 & 19.7 \\
+    & XGBoost & 53.9 & 36.2 \\
+    & Neural Network & \textbf{62.5} & 9.5 \\
+\hline
+\multirow{6}{*}{GPT-2} 
+    & Logistic Regression & 55.2 & 37.6 \\
+    & KNN & 48.5 & \textbf{46.6} \\
+    & SVM Classifier & 55.6 & 35.7 \\
+    & Random Forest & \textbf{58.2} & 17.2 \\
+    & XGBoost & 52.6 & 35.9 \\
+    & Neural Network & 56.4 & 29.0 \\
+\hline
+%\multicolumn{2}{c|}{Total Variables}     & 28,946 & 356 & 21,443 & 23,962\\
+%\multicolumn{2}{c|}{Residual Error Mean} & 3.04   & 3.50 & 2.92  & 2.93 \\
+%\hline
 \end{tabular}
-%\begin{tablenotes}[hang]
-%\item[]Table note
-%\item[a]First note
-%\item[b]Another table note
-%\end{tablenotes}
-\end{threeparttable}
+\caption{Results table}
+\label{results_table}
 \end{table}
 
-\begin{table}[hbt!]
-\begin{threeparttable}
-\caption{Word2Vec Embeddings results}
-\label{word2vec_embeddings_results}
-\begin{tabular}{lll}
-\toprule
-\headrow Model & Accuracy & F1-Score\\
-\midrule
- Logisitc Regression             &       59.0   &       \textbf{40.7} \\
- KNN            &       55.5 &       40.0   \\
- SVM Classifier            &       59.3 &       39.2 \\
- Random Forest &       \textbf{62.9} &       29.9 \\
- XGBoost        &       56.3 &       38.2 \\
- Neural Network  &       60.1 &       40.0   \\
-\bottomrule
-\end{tabular}
-%\begin{tablenotes}[hang]
-%\item[]Table note
-%\item[a]First note
-%\item[b]Another table note
-%\end{tablenotes}
-\end{threeparttable}
+\begin{table}[htb]
+\centering
+{
+\makegapedcells
+\begin{tabular}{cc|cc}
+\multicolumn{2}{c}{}
+            &   \multicolumn{2}{c}{Predicted} \\
+    &       &   Yes &   No              \\ 
+    \cline{2-4}
+\multirow{2}{*}{\rotatebox[origin=c]{90}{Actual}}
+    & Yes   & 331   & 487                 \\
+    & No    & 165    & 284                \\ 
+    \cline{2-4}
+    \end{tabular}
+ }
+\caption{Confussion matrix for the GPT-2+KNN model}
+\label{gpt2knn_cm}
 \end{table}
-
-\begin{table}[hbt!]
-\begin{threeparttable}
-\caption{BERT Embeddings results}
-\label{bert_embeddings_results}
-\begin{tabular}{lll}
-\toprule
-\headrow Model & Accuracy & F1-Score\\
-\midrule
- Logistic Regression                 &       52.8 &       34.6 \\
- KNN                &       53.1 &       \textbf{35.7} \\
- SVM Classifier                &       50.4 &       33.0   \\
- Random Forest       &       57.9 &       22.4 \\
- XGBoost            &       52.3 &       34.8 \\
- Neural Network      &       \textbf{59.6} &       17.9 \\
-\bottomrule
-\end{tabular}
-%\begin{tablenotes}[hang]
-%\item[]Table note
-%\item[a]First note
-%\item[b]Another table note
-%\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\begin{table}[hbt!]
-\begin{threeparttable}
-\caption{RoBERTa Embeddings results}
-\label{roberta_embeddings_results}
-\begin{tabular}{lll}
-\toprule
-\headrow Model & Accuracy & F1-Score\\
-\midrule
- Logistic Regression              &       51.9 &       38.0   \\
- KNN             &       52.8 &       \textbf{38.2} \\
- SVM Classifier             &       52.9 &       36.0   \\
- Random Forest    &       61.4 &       19.7 \\
- XGBoost         &       53.9 &       36.2 \\
- Neural Network   &       \textbf{62.5} &        9.5 \\
-\bottomrule
-\end{tabular}
-%\begin{tablenotes}[hang]
-%\item[]Table note
-%\item[a]First note
-%\item[b]Another table note
-%\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\begin{table}[hbt!]
-\begin{threeparttable}
-\caption{GPT-2 Embeddings results}
-\label{gpt2_embeddings_results}
-\begin{tabular}{lll}
-\toprule
-\headrow Model & Accuracy & F1-Score\\
-\midrule
- Logistic Regression                 &       55.2 &       37.6 \\
- KNN                &       48.5 &       \textbf{46.6} \\
- SVM Classifier                &       55.6 &       35.7 \\
- Random Forest       &       \textbf{58.2} &       17.2 \\
- XGBoost            &       52.6 &       35.9 \\
- Neural Network      &       56.4 &       29.0   \\
-\bottomrule
-\end{tabular}
-%\begin{tablenotes}[hang]
-%\item[]Table note
-%\item[a]First note
-%\item[b]Another table note
-%\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\begin{table}[hbt!]
-\begin{threeparttable}
-\caption{Logistic Regression results}
-\label{lr_results}
-\begin{tabular}{lll}
-\toprule
-\headrow Embedding Method & Accuracy & F1-Score\\
-\midrule
- GloVe    &       53.4 &       33.2 \\
- Word2Vec &       \textbf{59.0} &       \textbf{40.7} \\
- BERT     &       52.8 &       34.6 \\
- RoBERTa  &       51.9 &       38.0 \\
- GPT-2    &       55.2 &       37.6 \\
-\bottomrule
-\end{tabular}
-%\begin{tablenotes}[hang]
-%\item[]Table note
-%\item[a]First note
-%\item[b]Another table note
-%\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\begin{table}[hbt!]
-\begin{threeparttable}
-\caption{KNN results}
-\label{knn_results}
-\begin{tabular}{lll}
-\toprule
-\headrow Embedding Method & Accuracy & F1-Score\\
-\midrule
- GloVe    &       53.7 &       34.7 \\
- Word2Vec &       \textbf{55.5} &       40.0 \\
- BERT     &       53.1 &       35.7 \\
- RoBERTa  &       52.8 &       38.2 \\
- GPT-2    &       48.5 &       \textbf{46.6} \\
-\bottomrule
-\end{tabular}
-%\begin{tablenotes}[hang]
-%\item[]Table note
-%\item[a]First note
-%\item[b]Another table note
-%\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\begin{table}[hbt!]
-\begin{threeparttable}
-\caption{SVM Classifier results}
-\label{svc_results}
-\begin{tabular}{lll}
-\toprule
-\headrow Embedding Method & Accuracy & F1-Score\\
-\midrule
- GloVe    &       56.1 &       34.4 \\
- Word2Vec &       \textbf{59.3} &       \textbf{39.2} \\
- BERT     &       50.4 &       33.0 \\
- RoBERTa  &       52.9 &       36.0 \\
- GPT-2    &       55.6 &       35.7 \\
-\bottomrule
-\end{tabular}
-%\begin{tablenotes}[hang]
-%\item[]Table note
-%\item[a]First note
-%\item[b]Another table note
-%\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\begin{table}[hbt!]
-\begin{threeparttable}
-\caption{Random Forest results}
-\label{rf_results}
-\begin{tabular}{lll}
-\toprule
-\headrow Embedding Method & Accuracy & F1-Score\\
-\midrule
- GloVe    &       61.2 &       22.9 \\
- Word2Vec &       \textbf{62.9} &       \textbf{29.9} \\
- BERT     &       57.9 &       22.4 \\
- RoBERTa  &       61.4 &       19.7 \\
- GPT-2    &       58.2 &       17.2 \\
-\bottomrule
-\end{tabular}
-%\begin{tablenotes}[hang]
-%\item[]Table note
-%\item[a]First note
-%\item[b]Another table note
-%\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\begin{table}[hbt!]
-\begin{threeparttable}
-\caption{XGBoost results}
-\label{xgb_results}
-\begin{tabular}{lll}
-\toprule
-\headrow Embedding Method & Accuracy & F1-Score\\
-\midrule
- GloVe    &       53.0 &       36.4 \\
- Word2Vec &       \textbf{56.3} &       \textbf{38.2} \\
- BERT     &       52.3 &       34.8 \\
- RoBERTa  &       53.9 &       36.2 \\
- GPT-2    &       52.6 &       35.9 \\
-\bottomrule
-\end{tabular}
-%\begin{tablenotes}[hang]
-%\item[]Table note
-%\item[a]First note
-%\item[b]Another table note
-%\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\begin{table}[hbt!]
-\begin{threeparttable}
-\caption{Neural Network results}
-\label{nn_results}
-\begin{tabular}{lll}
-\toprule
-\headrow Embedding Method & Accuracy & F1-Score\\
-\midrule
- GloVe    &       52.5 &       37.8 \\
- Word2Vec &       60.1 &       \textbf{40.0} \\
- BERT     &       59.6 &       17.9 \\
- RoBERTa  &       \textbf{62.5} &        9.5 \\
- GPT-2    &       56.4 &       29.0 \\
-\bottomrule
-\end{tabular}
-%\begin{tablenotes}[hang]
-%\item[]Table note
-%\item[a]First note
-%\item[b]Another table note
-%\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
