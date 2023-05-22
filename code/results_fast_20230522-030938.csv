@@ -1,0 +1,31 @@
+Model,Accuracy,F1-Score,Balanced Accuracy,ROC AUC
+LR+GloVe,64.6,78.5,50.0,50.0
+KNN+GloVe,60.8,73.8,50.6,50.6
+SVC+GloVe,64.6,78.5,50.0,50.0
+RandomForest+GloVe,61.7,75.9,48.8,48.8
+XGBoost+GloVe,63.4,77.1,50.3,50.3
+NeuralNetwork+GloVe,62.4,74.4,53.2,53.2
+LR+Word2Vec,64.6,78.5,50.0,50.0
+KNN+Word2Vec,60.7,73.8,50.4,50.4
+SVC+Word2Vec,64.0,77.9,49.9,49.9
+RandomForest + Word2Vec,61.5,74.6,50.7,50.7
+XGBoost+Word2Vec,64.1,77.8,50.3,50.3
+NeuralNetwork+Word2Vec,63.9,77.3,51.1,51.1
+LR+BERT,58.6,70.5,51.2,51.2
+KNN+BERT,58.4,71.7,48.9,48.9
+SVC+BERT,64.6,78.5,50.0,50.0
+RandomForest+BERT,64.7,78.0,51.5,51.5
+XGBoost+BERT,64.2,78.2,49.8,49.8
+NeuralNetwork+BERT,59.0,71.0,51.2,51.2
+LR+RoBERTa,64.6,78.5,50.0,50.0
+KNN+RoBERTa,58.8,72.2,48.9,48.9
+SVC+RoBERTa,64.6,78.5,50.0,50.0
+RandomForest+RoBERTa,63.7,77.5,50.0,50.0
+XGBoost+RoBERTa,64.7,78.5,50.2,50.2
+NeuralNetwork+RoBERTa,63.4,77.2,50.0,50.0
+LR+GPT2,64.6,78.5,50.0,50.0
+KNN+GPT2,58.7,70.9,50.9,50.9
+SVC+GPT2,64.6,78.5,50.0,50.0
+RandomForest+GPT2,62.9,77.0,49.2,49.2
+XGBoost+GPT2,64.3,78.1,50.4,50.4
+NeuralNetwork+GPT2,61.4,74.1,51.6,51.6
