@@ -97,7 +97,13 @@ Decoders in GPT-2, similar to BERT, employ self-attention mechanisms. However, u
 The final component of the fake news detection model architecture is a classifier, which outputs only one of two values, namely whether a given sentence is a fake news or not. Classifiers are models whose results belong to previously defined classes, namely binary classification when there are two possible return values, or multiclass classification when there are more possible classes. There are many types of classifiers, which differ in structure and purpose depending on the characteristics of the data to which they are applied. Some classifiers perform better with one type of data than others. In selecting a group of classifiers for the study, I aimed to cover the widest range of popular classification models. Thus, logistic regression, which is a representative of econometric approach, K-Nearest Neighbours (KNN) and Support Vector Machine Classifier (SVC), which are representatives of non-parametric models, Random Forest as a representative of ensemble methods that use decision trees, eXtreme Gradient Boosting (XGBoost) as a representative of ensemble methods that use boosting, and neural networks, which are a separate class of models also widely used in classification, were chosen for the study.
 
 \subsection{Logistic Regression}
-\textit{Description of Logistic Regression algorithm...}
+Logistic Regression is a model used for binary classification. This model is based on the utilization of the logistic function to model the relationship between the variables in the model and the probability of the occurrence of a true event. The output of the model ranges from 0 to 1, which can be interpreted as the probability that a given observation is positive.
+
+The logistic regression model is fitted by optimizing a loss function (in this case, the cross-entropy loss). In the optimization process, the aim is to obtain weights for the input variables (or parameters) that minimize the difference between the estimated probabilities and the actual values in the training set.
+
+The logistic regression model can also be tuned. By having a set of variables, one can make choices about which variables are most useful in modeling a particular phenomenon, thereby minimizing model overfitting and improving its generalization. This is achieved through a technique called regularization. It introduces a "penalty" for the model for assigning larger weights to variables, thus "encouraging" the simplification of the model by eliminating the excessive influence of unnecessary variables. Two types of regularization are distinguished: L1 (Lasso Regularization) and L2 (Ridge Regularization). The key difference between them is that L1 regularization allows for the possibility of reducing weights to zero, completely eliminating variables from the model. On the other hand, L2 regularization does not allow for such a possibility, as variables always retain some nonzero weight. Additionally, it is possible to adjust the strength of the regularization. By selecting appropriate parameters, it is possible to find an optimal trade-off between the complexity of the model and its generalization.
+
+Logistic regression is a parametric model that is based on certain a priori assumptions about the input data. The model assumes a linear relationship between the variables and the log-odds of positive classes (this assumption can be relaxed by introducing new variables that are combinations of the remaining ones).
 
 \subsection{K-Nearest Neighbors (KNN)}
 \textit{Description of KNN algorithm...}
@@ -113,9 +119,6 @@ The final component of the fake news detection model architecture is a classifie
 
 \subsection{Neural Network}
 \textit{Description of Neural Network algorithm...}
-\\
-\hl{Do zrobienia: polepszyc tunowanie NN, upewnic sie ze nie ma bledow w kodzie}
-
 
 \section{Metrics (WIP)}
 \textit{Description of used performance metrics..}
