@@ -106,25 +106,40 @@ The logistic regression model can also be tuned. By having a set of variables, o
 Logistic regression is a parametric model that is based on certain a priori assumptions about the input data. The model assumes a linear relationship between the variables and the log-odds of positive classes (this assumption can be relaxed by introducing new variables that are combinations of the remaining ones).
 
 \subsection{K-Nearest Neighbors (KNN)}
-\textit{Description of KNN algorithm...}
+K-Nearest Neighbors (KNN) is an algorithm that can be used for both classification and regression tasks. It is non-parametric, meaning that no assumptions about the data are made during the fitting process. Instead, the data is directly used for making predictions. KNN operates on the principle that similar observations belong to the same classes. Upon receiving a new instance, the algorithm calculates the distance to the remaining observations and selects the K closest neighbors (hence the name of the algorithm). The new instance is then assigned to the cluster with which it shares the most common points, or in the case of regression, the mean is calculated.
+
+Model tuning involves adjusting the number of neighbors (K) considered by the algorithm. Selecting an appropriate number of clusters is crucial because a too low value of K can lead to overfitting and high noise in the data. On the other hand, a large number of neighbors can make it difficult to capture local variations in the data.
+
+To improve the model's performance, one can also customize the method used to calculate distances between instances. The most popular distance calculation methods include Euclidean distance, Manhattan distance, and Minkowski distance. It is important for accurate distance calculation that the variable ranges are similar. Therefore, it is important to normalize the variables prior to training KNN models.
 
 \subsection{Support Vector Machine Classifier (SVC)}
-\textit{Description of SVM Classifier algorithm...}
+Another popular algorithm used for both regression and classification is Support Vector Machine (SVM). The algorithm is based on finding the best possible hyperplane that separates the data into distinct classes. The constructed hyperplane aims to be as far as possible from two different data points belonging to different classes (these points are called support vectors), while minimizing the classification error. To achieve this, the hinge loss function is minimized, which penalizes the algorithm for misclassified observations.
+
+By utilizing the Kernel Trick and mapping the data to a higher-dimensional space, SVM gains the ability to capture nonlinear relationships between variables. The most popular kernel functions include linear, polynomial, radial basis function (RBF), and sigmoid.
+
+During SVM tuning, the parameter C can be modified, which influences the trade-off between maximizing the distance of the hyperplane from two different points and minimizing the classification error. A small value of the C parameter flattens the hyperplane, causing the model to potentially misclassify more points. A large value of the C parameter makes the hyperplane more prone to adjusting its shape to individual observations, while also exposing the model to overfitting.
 
 \subsection{Random Forest}
-\textit{Description of Random Forest algorithm...}
+Random Forest is a non-parametric algorithm that can successfully be used in both classification and regression tasks. It represents a family of ensemble methods, where the final predictions are the result of combining predictions from multiple decision trees. By leveraging the results of individual decision trees, Random Forest predictions are more accurate and robust. Each decision tree is estimated on randomly selected variables and observations selected with replacement. This technique, called bootstrap sampling, allows each decision tree to be trained on a slightly different dataset.
+
+For each randomly selected subset of data, a decision tree is created, which iteratively divides the given dataset into two or more subsets. These divisions are made in such a way that the resulting groups differ as much as possible from each other. The degree of dissimilarity between subgroups can be measured, for example, using Gini impurity or information gain. Subsequent splits are generated until a stopping criterion is reached, such as maximum depth or minimum number of observations in a leaf node.
+
+After creating all the trees, their predictions are combined into one. In the case of classification, this is done through majority voting, where the most frequently indicated value is selected.
+
+In comparison to the previously described methods, Random Forest offers a larger number of hyperparameters for tunning. The most important ones include the number of trees, maximum depth, minimum samples split, and feature subset size. Modifying the number of trees in the forest usually involves a trade-off between model training cost and accuracy. The more trees, the more accurate the predictions, but at a higher prediction cost. The maximum depth of a tree determines its complexity level. Deeper trees capture variable dependencies better, but also increase the risk of overfitting. The minimum samples split parameter determines the minimum number of observations required to make a split. A smaller value results in a more complex tree. Modifying the feature subset size parameter affects the level of randomness and diversity among individual trees.
+
+Due to its ability to handle multidimensional data, handle missing data, and provide feature importance, Random Forest is a common choice for creating machine learning models.
 
 \subsection{eXtreme Gradient Boosting (XGBoost)}
-\textit{Description of XGB algorithm...}
+\textit{Description of XGB algorithm...} \textit{ETA: 27.05}
 
 \subsection{Neural Network}
-\textit{Description of Neural Network algorithm...}
-
-\section{Metrics (WIP)}
-\textit{Description of used performance metrics..}
+\textit{Description of Neural Network algorithm...} \textit{ETA: 27.05}
 
 
 \section{Results (WIP)}
+\textit{Description of used performance metrics and then results...} 
+\textit{ETA: 27-28.05}
 
 \begin{table}[htb]
 \centering
