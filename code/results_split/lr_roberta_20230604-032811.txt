@@ -1,0 +1,12 @@
+Train CM = array([[4897, 1523],
+       [2137, 2967]], dtype=int64)
+Train Accuracy = 68.2
+Train F1 = 61.9
+Train Balanced Accuracy = 67.2
+Train ROCAUC = 67.2
+Test CM = array([[487, 227],
+       [279, 274]], dtype=int64)
+Test Accuracy = 60.1
+Test F1 = 52.0
+Test Balanced Accuracy = 58.9
+Test ROCAUC = 58.9
