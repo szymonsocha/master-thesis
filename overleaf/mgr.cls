@@ -182,12 +182,12 @@
 	  \end{center}
 	   \@dziedzina\par
 	  \vspace*{26pt}%
-	  \begin{center}%
-		\bfseries\large Subject classification
-		\@endparpenalty\@M
-	  \end{center}
-	  \@klasyfikacja\par
-	  \vspace*{26pt}%
+	  %\begin{center}%
+	%	\bfseries\large Subject classification
+	%	\@endparpenalty\@M
+	  %\end{center}
+	  %\@klasyfikacja\par
+	  %\vspace*{26pt}%
 	  \begin{center}%
 		\begingroup
 		\bfseries\large Tytuł pracy w języku polskim
