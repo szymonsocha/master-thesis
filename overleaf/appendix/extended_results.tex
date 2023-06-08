@@ -1,0 +1,496 @@
+Below, I present the Confusion Matrices for all models.
+\vspace{1cm}
+
+
+% GloVe =============================================================================================================================================
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 516 (TN)           & 198 (FP) \\
+Actual positive & 307 (FN)           & 246 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the GloVe + Logistic Regression model}
+\label{glovelr_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 465 (TN)           & 249 (FP) \\
+Actual positive & 317 (FN)           & 236 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the GloVe + KNN model}
+\label{gloveknn_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 488 (TN)           & 226 (FP) \\
+Actual positive & 291 (FN)           & 262 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the GloVe + SVM model}
+\label{glovesvm_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 508 (TN)           & 206 (FP) \\
+Actual positive & 301 (FN)           & 252 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the GloVe + Random Forest model}
+\label{gloverf_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 533 (TN)           & 181 (FP) \\
+Actual positive & 310 (FN)           & 243 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the GloVe + XGBoost model}
+\label{glovexgb_cm}
+\end{table}
+
+% \begin{table}[!htbp]
+% \centering
+% {
+% \makegapedcells
+% \begin{tabular}{lll}
+%                 & Predicted negative & Predicted positive \\
+% \hline
+% Actual negative & 454 (TN)           & 260 (FP) \\
+% Actual positive & 239 (FN)           & 314 (TP) \\
+% \hline
+% \end{tabular}
+% }
+% \caption{Confussion matrix for the GloVe + Neural Network model}
+% \label{glovenn_cm}
+% \end{table}
+
+% Word2Vec =============================================================================================================================================
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 540 (TN)           & 174 (FP) \\
+Actual positive & 311 (FN)           & 242 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the Word2Vec + Logistic Regression model}
+\label{w2vlr_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 416 (TN)           & 298 (FP) \\
+Actual positive & 285 (FN)           & 268 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the Word2Vec + KNN model}
+\label{w2vknn_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 483 (TN)           & 231 (FP) \\
+Actual positive & 270 (FN)           & 283 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the Word2Vec + SVM model}
+\label{w2vsvm_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 500 (TN)           & 214 (FP) \\
+Actual positive & 320 (FN)           & 233 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the Word2Vec + Random Forest model}
+\label{w2vrf_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 466 (TN)           & 248 (FP) \\
+Actual positive & 295 (FN)           & 258 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the Word2Vec + XGBoost model}
+\label{w2vxgb_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 468 (TN)           & 246 (FP) \\
+Actual positive & 253 (FN)           & 300 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the Word2Vec + Neural Network model}
+\label{w2vnn_cm}
+\end{table}
+
+
+% BERT =================================================================================================================================================
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 508 (TN)           & 206 (FP) \\
+Actual positive & 295 (FN)           & 258 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the BERT + Logistic Regression model}
+\label{bertlr_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 447 (TN)           & 267 (FP) \\
+Actual positive & 292 (FN)           & 261 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the BERT + KNN model}
+\label{bertknn_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 476 (TN)           & 238 (FP) \\
+Actual positive & 287 (FN)           & 266 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the BERT + SVM model}
+\label{bertsvm_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 504 (TN)           & 210 (FP) \\
+Actual positive & 327 (FN)           & 226 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the BERT + Random Forest model}
+\label{bertrf_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 495 (TN)           & 219 (FP) \\
+Actual positive & 295 (FN)           & 258 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the BERT + XGBoost model}
+\label{bertxgb_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 426 (TN)           & 288 (FP) \\
+Actual positive & 244 (FN)           & 309 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the BERT + Neural Network model}
+\label{bertnn_cm}
+\end{table}
+
+
+% RoBERTa ==============================================================================================================================================
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 487 (TN)           & 227 (FP) \\
+Actual positive & 279 (FN)           & 274 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the RoBERTa + Logistic Regression model}
+\label{robertalr_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 457 (TN)           & 257 (FP) \\
+Actual positive & 289 (FN)           & 264 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the RoBERTa + KNN model}
+\label{robertaknn_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 503 (TN)           & 211 (FP) \\
+Actual positive & 277 (FN)           & 276 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the RoBERTa + SVM model}
+\label{robertasvm_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 524 (TN)           & 190 (FP) \\
+Actual positive & 328 (FN)           & 225 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the RoBERTa + Random Forest model}
+\label{robertarf_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 478 (TN)           & 236 (FP) \\
+Actual positive & 292 (FN)           & 261 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the RoBERTa + XGBoost model}
+\label{robertaxgb_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 495 (TN)           & 219 (FP) \\
+Actual positive & 262 (FN)           & 291 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the RoBERTa + Neural Network model}
+\label{robertann_cm}
+\end{table}
+
+
+% GPT-2 ================================================================================================================================================
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 507 (TN)           & 207 (FP) \\
+Actual positive & 275 (FN)           & 278 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the GPT-2 + Logistic Regression model}
+\label{gpt2lr_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 483 (TN)           & 231 (FP) \\
+Actual positive & 336 (FN)           & 217 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the GPT-2 + KNN model}
+\label{gpt2knn_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 516 (TN)           & 198 (FP) \\
+Actual positive & 288 (FN)           & 265 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the GPT-2 + SVM model}
+\label{gpt2svm_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 506 (TN)           & 208 (FP) \\
+Actual positive & 314 (FN)           & 239 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the GPT-2 + Random Forest model}
+\label{gpt2rf_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 503 (TN)           & 211 (FP) \\
+Actual positive & 294 (FN)           & 259 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the GPT-2 + XGBoost model}
+\label{gpt2xgb_cm}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+{
+\makegapedcells
+\begin{tabular}{lll}
+                & Predicted negative & Predicted positive \\
+\hline
+Actual negative & 462 (TN)           & 252 (FP) \\
+Actual positive & 251 (FN)           & 302 (TP) \\
+\hline
+\end{tabular}
+}
+\caption{Confussion matrix for the GPT-2 + Neural Network model}
+\label{gpt2nn_cm}
+\end{table}
